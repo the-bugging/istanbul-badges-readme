@@ -1,6 +1,6 @@
 {
   "name": "istanbul-badges-readme",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Creates README badges from istanbul coverage report",
   "scripts": {
     "test": "jest",
@@ -68,8 +68,5 @@
     "ts-jest": "^26.1.4",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.7"
-  },
-  "dependencies": {
-    "winston": "^3.3.3"
   }
 }
