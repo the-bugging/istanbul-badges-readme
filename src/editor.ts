@@ -1,12 +1,9 @@
 import fs from 'fs';
-import { create } from './logging';
 import { readmePath, coveragePath, hashes, coverageUrl } from './constants';
 import { THashes, TReport } from './types';
 
-const Logger = create('Tamperer');
-
 export const getReadmeHashes = (readmeFile: string) => {
-  Logger.info('- Getting readme hashes...');
+  console.log('- Getting readme hashes...');
 
   const readmeHashes = hashes.coverage.map((hash) => {
     if (readmeFile.includes(`![${hash.value}]`)) {
@@ -33,7 +30,7 @@ export const getCoverageColor = (coverage: number) => {
 };
 
 export const getCoverageBadge = (coverageFile: string, hashKey: string) => {
-  Logger.info(` - Getting coverage badge url for ${hashKey}...`);
+  console.log(`- Getting coverage badge url for ${hashKey}...`);
 
   try {
     const parsedCoverage: TReport = JSON.parse(coverageFile);
@@ -54,7 +51,7 @@ export const getCoverageBadge = (coverageFile: string, hashKey: string) => {
 export const getNewReadme = (readmeFile: string, coverageFile: string) => (
   readmeHashes: THashes[],
 ): Promise<string> => {
-  Logger.info('- Getting new readme data...');
+  console.log('- Getting new readme data...');
 
   let newReadmeFile = readmeFile;
 
@@ -84,7 +81,7 @@ export const getNewReadme = (readmeFile: string, coverageFile: string) => (
 };
 
 export const writeNewReadme = (readmePath: string) => (newReadmeData: string) => {
-  Logger.info('- Writing new readme data...');
+  console.log('- Writing new readme data...');
 
   try {
     fs.writeFileSync(readmePath, newReadmeData, 'utf8');
@@ -94,7 +91,7 @@ export const writeNewReadme = (readmePath: string) => (newReadmeData: string) =>
 };
 
 export const editReadme = () => {
-  Logger.info('2. Editor process started');
+  console.log('Info: 2. Editor process started');
 
   const readmeFile = fs.readFileSync(readmePath, 'utf-8');
   const coverageFile = fs.readFileSync(coveragePath, 'utf8');
@@ -103,5 +100,5 @@ export const editReadme = () => {
     .then(getReadmeHashes)
     .then(getNewReadme(readmeFile, coverageFile))
     .then(writeNewReadme(readmePath))
-    .then(() => Logger.info('2. Editor process ended'));
+    .then(() => console.log('Info: 2. Editor process ended'));
 };

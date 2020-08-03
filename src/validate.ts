@@ -1,8 +1,5 @@
 import fs from 'fs';
-import { create } from './logging';
 import { hashes, readmePath, coveragePath } from './constants';
-
-const Logger = create('Validate');
 
 export const getCoveragePath = (path: string): string => {
   let coveragePath: string = path;
@@ -72,23 +69,23 @@ export const doestReadmeHashExist = (readmePath: string): Promise<boolean | stri
 };
 
 export const checkConfig = () => {
-  Logger.info('1. Config check process started');
+  console.log('Info: 1. Config check process started');
 
   return Promise.resolve(doesReadmeFileExist(readmePath))
     .then(() => {
-      Logger.info('- Readme file exists... ✔️.');
+      console.log('- Readme file exists... ✔️.');
     })
     .then(() => doesCoverageFileExist(coveragePath))
     .then(() => {
-      Logger.info('- Coverage file exists... ✔️.');
+      console.log('- Coverage file exists... ✔️.');
     })
     .then(() => doesCoverageHashesExist(coveragePath))
     .then(() => {
-      Logger.info('- Coverage hashes exist... ✔️.');
+      console.log('- Coverage hashes exist... ✔️.');
     })
     .then(() => doestReadmeHashExist(readmePath))
     .then(() => {
-      Logger.info('- Readme hashes exist... ✔️.');
+      console.log('- Readme hashes exist... ✔️.');
     })
-    .then(() => Logger.info('1. Config check process ended'));
+    .then(() => console.log('Info: 1. Config check process ended'));
 };
