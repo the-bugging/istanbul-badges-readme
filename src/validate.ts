@@ -27,7 +27,7 @@ export const getCoveragePath = (path: string): string => {
   return coveragePath;
 };
 
-export const doesReadmeExist = (readmePath: string): Promise<boolean | string> => {
+export const doesReadmeFileExist = (readmePath: string): Promise<boolean | string> => {
   return new Promise((resolve, reject) => {
     const doesItExist = fs.existsSync(readmePath);
 
@@ -37,7 +37,7 @@ export const doesReadmeExist = (readmePath: string): Promise<boolean | string> =
   });
 };
 
-export const doesCoverageExist = (coveragePath: string): Promise<boolean | string> => {
+export const doesCoverageFileExist = (coveragePath: string): Promise<boolean | string> => {
   return new Promise((resolve, reject) => {
     const doesItExist = fs.existsSync(getCoveragePath(coveragePath));
 
@@ -64,7 +64,7 @@ export const doestReadmeHashExist = (readmePath: string): Promise<boolean | stri
     const readmeFile = fs.readFileSync(readmePath);
 
     hashes.coverage.forEach((hash) => {
-      if (readmeFile.includes(hash.value)) return resolve(true);
+      if (readmeFile.includes(`![${hash.value}]`)) return resolve(true);
     });
 
     return reject('Readme does not contain the needed hashes');
@@ -74,21 +74,21 @@ export const doestReadmeHashExist = (readmePath: string): Promise<boolean | stri
 export const checkConfig = () => {
   Logger.info('1. Config check process started');
 
-  return Promise.resolve(doesReadmeExist(readmePath))
+  return Promise.resolve(doesReadmeFileExist(readmePath))
     .then(() => {
-      Logger.info('- Readme... Check.');
+      Logger.info('- Readme file exists... ✔️.');
     })
-    .then(() => doesCoverageExist(coveragePath))
+    .then(() => doesCoverageFileExist(coveragePath))
     .then(() => {
-      Logger.info('- Coverage... Check.');
+      Logger.info('- Coverage file exists... ✔️.');
     })
     .then(() => doesCoverageHashesExist(coveragePath))
     .then(() => {
-      Logger.info('- Coverage Hashes... Check.');
+      Logger.info('- Coverage hashes exist... ✔️.');
     })
     .then(() => doestReadmeHashExist(readmePath))
     .then(() => {
-      Logger.info('- Readme Hashes... Check.');
+      Logger.info('- Readme hashes exist... ✔️.');
     })
-    .finally(() => Logger.info('1. Config check process ended'));
+    .then(() => Logger.info('1. Config check process ended'));
 };

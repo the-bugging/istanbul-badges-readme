@@ -8,7 +8,8 @@
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
     "build": "rm -rf lib/ && tsc",
     "start": "npm run build && node lib/index.js",
-    "start:dev": "nodemon"
+    "start:dev": "nodemon",
+    "release": "standard-version"
   },
   "main": "lib/index.js",
   "bin": {
@@ -26,6 +27,7 @@
     "jest",
     "istanbul",
     "mocha",
+    "chai",
     "c8",
     "sinon",
     "readme",
@@ -62,6 +64,7 @@
     "jest": "^26.2.2",
     "nodemon": "^2.0.4",
     "prettier": "^2.0.5",
+    "standard-version": "^8.0.2",
     "ts-jest": "^26.1.4",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.7"

@@ -22,6 +22,7 @@ const upperCaseLevel = format((info) => {
 
 const customFormat = () => printf(({ level, message, scope }) => `[${level}] - [${scope}]: ${message}`);
 
-const combineLogFormats = (...formats) => combine(upperCaseLevel(), splat(), colors(), customFormat(), ...formats);
+const combineLogFormats = (...formats: any[]) =>
+  combine(upperCaseLevel(), splat(), colors(), customFormat(), ...formats);
 
 export { combineLogFormats };

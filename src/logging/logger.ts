@@ -1,7 +1,8 @@
+/* istanbul ignore file */
 import { createLogger, transports } from 'winston';
 import { combineLogFormats } from './format-levels';
 
-const create = (scope) =>
+const create = (scope: string) =>
   createLogger({
     level: 'info',
     defaultMeta: {

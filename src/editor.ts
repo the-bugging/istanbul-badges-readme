@@ -9,7 +9,7 @@ export const getReadmeHashes = (readmeFile: string) => {
   Logger.info('- Getting readme hashes...');
 
   const readmeHashes = hashes.coverage.map((hash) => {
-    if (readmeFile.includes(hash.value)) {
+    if (readmeFile.includes(`![${hash.value}]`)) {
       return hash;
     }
 
@@ -66,8 +66,10 @@ export const getNewReadme = (readmeFile: string, coverageFile: string) => (
         reject('There has been an error getting new coverage badges');
       }
 
-      const startIndex = newReadmeFile.indexOf(hash.value);
-      const valueToChangeStart = newReadmeFile.slice(startIndex + hash.value.length + 1);
+      const pattern = `![${hash.value}]`;
+
+      const startIndex = newReadmeFile.indexOf(pattern);
+      const valueToChangeStart = newReadmeFile.slice(startIndex + pattern.length);
 
       const valueToChangeIndex = valueToChangeStart.indexOf(')');
       const valueToChangeFinal = valueToChangeStart.substring(1, valueToChangeIndex);
@@ -101,5 +103,5 @@ export const editReadme = () => {
     .then(getReadmeHashes)
     .then(getNewReadme(readmeFile, coverageFile))
     .then(writeNewReadme(readmePath))
-    .finally(() => Logger.info('2. Editor process ended'));
+    .then(() => Logger.info('2. Editor process ended'));
 };
