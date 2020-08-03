@@ -84,7 +84,7 @@ export const writeNewReadme = (readmePath: string) => (newReadmeData: string) =>
   console.log('- Writing new readme data...');
 
   try {
-    fs.writeFileSync(readmePath, newReadmeData, 'utf8');
+    return fs.writeFileSync(readmePath, newReadmeData, 'utf8');
   } catch {
     return false;
   }

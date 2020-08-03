@@ -10,6 +10,8 @@ export const getCoveragePath = (path: string): string => {
       if (item.indexOf('coverage') >= 0) {
         return item;
       }
+
+      return '';
     })
     .toString();
 
