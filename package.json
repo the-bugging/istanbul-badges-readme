@@ -9,7 +9,8 @@
     "build": "rm -rf lib/ && tsc",
     "start": "npm run build && node lib/index.js",
     "start:dev": "nodemon",
-    "release": "standard-version"
+    "release": "standard-version",
+    "make-badges": "node lib/index.js"
   },
   "main": "lib/index.js",
   "bin": {
