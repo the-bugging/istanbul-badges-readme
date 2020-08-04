@@ -8,7 +8,7 @@
 
 ---
 
-## Table of Contents (Optional)
+## Table of Contents
 
 - [Example Markup](<#example-markup-(paste-it-anywhere-in-your-README.md)>)
 - [Example Running](#example-running)
