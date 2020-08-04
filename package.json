@@ -35,6 +35,10 @@
   ],
   "author": "Olavo Parno",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/olavoparno/istanbul-badges-readme.git"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -44,6 +48,9 @@
     "*.{js,ts,tsx}": [
       "eslint --fix"
     ]
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   },
   "devDependencies": {
     "@types/jest": "^26.0.8",
