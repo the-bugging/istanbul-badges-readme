@@ -1,0 +1,56 @@
+{
+  "projectName": "istanbul-badges-readme",
+  "projectOwner": "olavoparno",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 70,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "olavoparno",
+      "name": "Olavo Parno",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/7513162?v=4",
+      "profile": "https://olavoparno.github.io",
+      "contributions": [
+        "ideas",
+        "code",
+        "test"
+      ]
+    },
+    {
+      "login": "nothingismagick",
+      "name": "nothingismagick",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/35242872?v=4",
+      "profile": "https://github.com/nothingismagick",
+      "contributions": [
+        "ideas",
+        "bug",
+        "content"
+      ]
+    },
+    {
+      "login": "fallenclient",
+      "name": "Dave Fisher",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/326470?v=4",
+      "profile": "http://www.fallenclient.co.uk",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "zaggino",
+      "name": "Martin Zagora",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1067319?v=4",
+      "profile": "http://twitter.com/zaggino",
+      "contributions": [
+        "ideas",
+        "bug"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "skipCi": true
+}
