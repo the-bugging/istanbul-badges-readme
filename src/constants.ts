@@ -1,6 +1,6 @@
-export const readmePath = './README.md';
-export const coveragePath = './coverage/coverage-summary.json';
-export const hashes = {
+export const readmePathConst = './README.md';
+export const coveragePathConst = './coverage/coverage-summary.json';
+export const hashesConst = {
   coverage: [
     { key: 'branches', value: 'Branches' },
     { key: 'functions', value: 'Functions' },
@@ -8,5 +8,5 @@ export const hashes = {
     { key: 'statements', value: 'Statements' },
   ],
 };
-export const coverageUrl = (coverage: number, color: string): string =>
+export const coverageUrlConst = (coverage: number, color: string): string =>
   `https://img.shields.io/badge/Coverage-${coverage}${encodeURI('%')}-${color}.svg`;

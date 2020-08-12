@@ -1,11 +1,11 @@
 import fs from 'fs';
-import { readmePath, coveragePath, hashes, coverageUrl } from './constants';
+import { readmePathConst, coveragePathConst, hashesConst, coverageUrlConst } from './constants';
 import { THashes, TReport } from './types';
 
 export const getReadmeHashes = (readmeFile: string) => {
   console.log('- Getting readme hashes...');
 
-  const readmeHashes = hashes.coverage.map((hash) => {
+  const readmeHashes = hashesConst.coverage.map((hash) => {
     if (readmeFile.includes(`![${hash.value}]`)) {
       return hash;
     }
@@ -42,7 +42,7 @@ export const getCoverageBadge = (coverageFile: string, hashKey: string) => {
     const coverage: number = parsedCoverage.total[hashKey].pct;
     const color = getCoverageColor(coverage);
 
-    return coverageUrl(coverage, color);
+    return coverageUrlConst(coverage, color);
   } catch {
     return false;
   }
@@ -93,12 +93,12 @@ export const writeNewReadme = (readmePath: string) => (newReadmeData: string) =>
 export const editReadme = () => {
   console.log('Info: 2. Editor process started');
 
-  const readmeFile = fs.readFileSync(readmePath, 'utf-8');
-  const coverageFile = fs.readFileSync(coveragePath, 'utf8');
+  const readmeFile = fs.readFileSync(readmePathConst, 'utf-8');
+  const coverageFile = fs.readFileSync(coveragePathConst, 'utf8');
 
   return Promise.resolve(readmeFile)
     .then(getReadmeHashes)
     .then(getNewReadme(readmeFile, coverageFile))
-    .then(writeNewReadme(readmePath))
+    .then(writeNewReadme(readmePathConst))
     .then(() => console.log('Info: 2. Editor process ended'));
 };

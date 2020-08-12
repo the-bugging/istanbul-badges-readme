@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { hashes, readmePath, coveragePath } from './constants';
+import { hashesConst, readmePathConst, coveragePathConst } from './constants';
 
 export const getCoveragePath = (path: string): string => {
   let coveragePath: string = path;
@@ -50,7 +50,7 @@ export const doesCoverageHashesExist = (coveragePath: string): Promise<boolean |
   return new Promise((resolve, reject) => {
     const coverageFile = fs.readFileSync(coveragePath);
 
-    hashes.coverage.forEach((hash) => {
+    hashesConst.coverage.forEach((hash) => {
       if (coverageFile.includes(hash.key)) return resolve(true);
     });
 
@@ -62,7 +62,7 @@ export const doestReadmeHashExist = (readmePath: string): Promise<boolean | stri
   return new Promise((resolve, reject) => {
     const readmeFile = fs.readFileSync(readmePath);
 
-    hashes.coverage.forEach((hash) => {
+    hashesConst.coverage.forEach((hash) => {
       if (readmeFile.includes(`![${hash.value}]`)) return resolve(true);
     });
 
@@ -73,19 +73,19 @@ export const doestReadmeHashExist = (readmePath: string): Promise<boolean | stri
 export const checkConfig = () => {
   console.log('Info: 1. Config check process started');
 
-  return Promise.resolve(doesReadmeFileExist(readmePath))
+  return Promise.resolve(doesReadmeFileExist(readmePathConst))
     .then(() => {
       console.log('- Readme file exists... ✔️.');
     })
-    .then(() => doesCoverageFileExist(coveragePath))
+    .then(() => doesCoverageFileExist(coveragePathConst))
     .then(() => {
       console.log('- Coverage file exists... ✔️.');
     })
-    .then(() => doesCoverageHashesExist(coveragePath))
+    .then(() => doesCoverageHashesExist(coveragePathConst))
     .then(() => {
       console.log('- Coverage hashes exist... ✔️.');
     })
-    .then(() => doestReadmeHashExist(readmePath))
+    .then(() => doestReadmeHashExist(readmePathConst))
     .then(() => {
       console.log('- Readme hashes exist... ✔️.');
     })
