@@ -1,3 +1,5 @@
+<img align="right" alt="traffic" src="https://pv-badge.herokuapp.com/total.svg?repo_id=olavoparno-istanbul-badges-readme"/>
+
 # Istanbul Badges Readme
 
 > Creates README badges from istanbul coverage report
