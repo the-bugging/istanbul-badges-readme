@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.6](https://github.com/olavoparno/istanbul-badges-readme/compare/v1.0.5...v1.0.6) (2020-12-08)
+
+
+### Bug Fixes
+
+* **project:** adjust badges replacement ([6b60566](https://github.com/olavoparno/istanbul-badges-readme/commit/6b60566e491cd046369acf91aa4b875ef971596a)), closes [#2](https://github.com/olavoparno/istanbul-badges-readme/issues/2)
+
 ### [1.0.5](https://github.com/olavoparno/istanbul-badges-readme/compare/v1.0.4...v1.0.5) (2020-08-12)
 
 ### [1.0.4](https://github.com/olavoparno/istanbul-badges-readme/compare/v1.0.2...v1.0.4) (2020-08-04)
