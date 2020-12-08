@@ -4,5 +4,7 @@ export type THashes = {
 };
 
 export type TReport = {
-  [total: string]: any;
+  [total: string]: Record<string, Record<string, number>>;
 };
+
+export type TColors = 'red' | 'yellow' | 'brightgreen';

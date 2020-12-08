@@ -3,7 +3,7 @@ import { hashesConst, readmePathConst, coveragePathConst } from './constants';
 
 export const getCoveragePath = (path: string): string => {
   let coveragePath: string = path;
-  let argPath: string = '';
+  let argPath = '';
 
   const args = process.argv
     .filter((item) => {
@@ -70,10 +70,10 @@ export const doestReadmeHashExist = (readmePath: string): Promise<boolean | stri
   });
 };
 
-export const checkConfig = () => {
+export const checkConfig = (): Promise<void> => {
   console.log('Info: 1. Config check process started');
 
-  return Promise.resolve(doesReadmeFileExist(readmePathConst))
+  return doesReadmeFileExist(readmePathConst)
     .then(() => {
       console.log('- Readme file exists... ✔️.');
     })

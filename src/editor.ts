@@ -1,8 +1,8 @@
 import fs from 'fs';
 import { readmePathConst, coveragePathConst, hashesConst, coverageUrlConst } from './constants';
-import { THashes, TReport } from './types';
+import { TColors, THashes, TReport } from './types';
 
-export const getReadmeHashes = (readmeFile: string) => {
+export const getReadmeHashes = (readmeFile: string): THashes[] => {
   console.log('- Getting readme hashes...');
 
   const readmeHashes = hashesConst.coverage.map((hash) => {
@@ -18,7 +18,7 @@ export const getReadmeHashes = (readmeFile: string) => {
   return (filteredHashes as unknown) as THashes[];
 };
 
-export const getCoverageColor = (coverage: number) => {
+export const getCoverageColor = (coverage: number): TColors => {
   if (coverage < 80) {
     return 'red';
   }
@@ -29,7 +29,7 @@ export const getCoverageColor = (coverage: number) => {
   return 'brightgreen';
 };
 
-export const getCoverageBadge = (coverageFile: string, hashKey: string) => {
+export const getCoverageBadge = (coverageFile: string, hashKey: string): string | boolean => {
   console.log(`- Getting coverage badge url for ${hashKey}...`);
 
   try {
@@ -64,6 +64,7 @@ export const getNewReadme = (readmeFile: string, coverageFile: string) => (
       }
 
       const pattern = `![${hash.value}]`;
+      const enpatterned = (value: string) => `${pattern}(${value})`;
 
       const startIndex = newReadmeFile.indexOf(pattern);
       const valueToChangeStart = newReadmeFile.slice(startIndex + pattern.length);
@@ -71,16 +72,14 @@ export const getNewReadme = (readmeFile: string, coverageFile: string) => (
       const valueToChangeIndex = valueToChangeStart.indexOf(')');
       const valueToChangeFinal = valueToChangeStart.substring(1, valueToChangeIndex);
 
-      const newUrl = `${coverageBadge}`;
-
-      newReadmeFile = newReadmeFile.replace(valueToChangeFinal, newUrl);
+      newReadmeFile = newReadmeFile.replace(enpatterned(valueToChangeFinal), enpatterned(coverageBadge as string));
     });
 
     resolve(newReadmeFile);
   });
 };
 
-export const writeNewReadme = (readmePath: string) => (newReadmeData: string) => {
+export const writeNewReadme = (readmePath: string) => (newReadmeData: string): boolean | void => {
   console.log('- Writing new readme data...');
 
   try {
@@ -90,7 +89,7 @@ export const writeNewReadme = (readmePath: string) => (newReadmeData: string) =>
   }
 };
 
-export const editReadme = () => {
+export const editReadme = (): Promise<void> => {
   console.log('Info: 2. Editor process started');
 
   const readmeFile = fs.readFileSync(readmePathConst, 'utf-8');

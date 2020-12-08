@@ -3,10 +3,10 @@
 import { checkConfig } from './validate';
 import { editReadme } from './editor';
 
-const badger = () => {
+const badger = (): Promise<void> => {
   console.log('Info: 0. Istanbul Badges Readme process started');
 
-  return Promise.resolve(checkConfig())
+  return checkConfig()
     .then(() => editReadme())
     .catch((error) => {
       console.log(`Error: ${error}`);
