@@ -4,9 +4,9 @@
 
 > Creates README badges from istanbul coverage report
 
-| Statements                                                                    | Branches                                                               | Functions                                                                    | Lines                                                                   |
-| ----------------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| ![Statements](https://img.shields.io/badge/Coverage-94.85%25-brightgreen.svg) | ![Branches](https://img.shields.io/badge/Coverage-87.04%25-yellow.svg) | ![Functions](https://img.shields.io/badge/Coverage-92.03%25-brightgreen.svg) | ![Lines](https://img.shields.io/badge/Coverage-95.2%25-brightgreen.svg) |
+| Statements                | Branches                | Functions                | Lines                |
+| ------------------------- | ----------------------- | ------------------------ | -------------------- |
+| ![Statements](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg) | ![Branches](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg) | ![Functions](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg) | ![Lines](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg) |
 
 ---
 
@@ -27,15 +27,15 @@
 ```markdown
 | Statements                | Branches                | Functions                | Lines                |
 | ------------------------- | ----------------------- | ------------------------ | -------------------- |
-| ![Statements](#branches#) | ![Branches](#branches#) | ![Functions](#branches#) | ![Lines](#branches#) |
+| ![Statements](#statements#) | ![Branches](#branches#) | ![Functions](#functions#) | ![Lines](#lines#) |
 ```
 
-- The table is **optional**, the only markups that matters are the following:
+- The table is **optional**, the only markup that matters are the following:
 
-1. `![Statements]`
-1. `![Branches]`
-1. `![Functions]`
-1. `![Lines]`
+1. `![Statements](#statements#)`
+1. `![Branches](#branches#)`
+1. `![Functions](#functions#)`
+1. `![Lines](#lines#)`
 
 ---
 
