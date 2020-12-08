@@ -49,6 +49,15 @@
         "ideas",
         "bug"
       ]
+    },
+    {
+      "login": "engineervix",
+      "name": "Victor Miti",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/7713776?v=4",
+      "profile": "https://github.com/engineervix",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
