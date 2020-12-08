@@ -118,9 +118,20 @@
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore -->
-<table><tr><td align="center"><a href="https://olavoparno.github.io"><img src="https://avatars1.githubusercontent.com/u/7513162?v=4" width="70px;" alt="Olavo Parno"/><br /><sub><b>Olavo Parno</b></sub></a><br /><a href="#ideas-olavoparno" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/olavoparno/jest-badges-readme/commits?author=olavoparno" title="Code">💻</a> <a href="https://github.com/olavoparno/jest-badges-readme/commits?author=olavoparno" title="Tests">⚠️</a></td><td align="center"><a href="https://github.com/nothingismagick"><img src="https://avatars1.githubusercontent.com/u/35242872?v=4" width="70px;" alt="nothingismagick"/><br /><sub><b>nothingismagick</b></sub></a><br /><a href="#ideas-nothingismagick" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/olavoparno/jest-badges-readme/issues?q=author%3Anothingismagick" title="Bug reports">🐛</a> <a href="#content-nothingismagick" title="Content">🖋</a></td><td align="center"><a href="http://www.fallenclient.co.uk"><img src="https://avatars2.githubusercontent.com/u/326470?v=4" width="70px;" alt="Dave Fisher"/><br /><sub><b>Dave Fisher</b></sub></a><br /><a href="https://github.com/olavoparno/jest-badges-readme/issues?q=author%3Afallenclient" title="Bug reports">🐛</a></td></tr></table>
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://olavoparno.github.io"><img src="https://avatars1.githubusercontent.com/u/7513162?v=4" width="70px;" alt=""/><br /><sub><b>Olavo Parno</b></sub></a><br /><a href="#ideas-olavoparno" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/olavoparno/istanbul-badges-readme/commits?author=olavoparno" title="Code">💻</a> <a href="https://github.com/olavoparno/istanbul-badges-readme/commits?author=olavoparno" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/nothingismagick"><img src="https://avatars1.githubusercontent.com/u/35242872?v=4" width="70px;" alt=""/><br /><sub><b>nothingismagick</b></sub></a><br /><a href="#ideas-nothingismagick" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/olavoparno/istanbul-badges-readme/issues?q=author%3Anothingismagick" title="Bug reports">🐛</a> <a href="#content-nothingismagick" title="Content">🖋</a></td>
+    <td align="center"><a href="http://www.fallenclient.co.uk"><img src="https://avatars2.githubusercontent.com/u/326470?v=4" width="70px;" alt=""/><br /><sub><b>Dave Fisher</b></sub></a><br /><a href="https://github.com/olavoparno/istanbul-badges-readme/issues?q=author%3Afallenclient" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="http://twitter.com/zaggino"><img src="https://avatars1.githubusercontent.com/u/1067319?v=4" width="70px;" alt=""/><br /><sub><b>Martin Zagora</b></sub></a><br /><a href="#ideas-zaggino" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/olavoparno/istanbul-badges-readme/issues?q=author%3Azaggino" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/engineervix"><img src="https://avatars3.githubusercontent.com/u/7713776?v=4" width="70px;" alt=""/><br /><sub><b>Victor Miti</b></sub></a><br /><a href="https://github.com/olavoparno/istanbul-badges-readme/issues?q=author%3Aengineervix" title="Bug reports">🐛</a></td>
+  </tr>
+</table>
 
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
