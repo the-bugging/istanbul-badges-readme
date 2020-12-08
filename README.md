@@ -127,6 +127,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://www.fallenclient.co.uk"><img src="https://avatars2.githubusercontent.com/u/326470?v=4" width="70px;" alt=""/><br /><sub><b>Dave Fisher</b></sub></a><br /><a href="https://github.com/olavoparno/istanbul-badges-readme/issues?q=author%3Afallenclient" title="Bug reports">🐛</a></td>
     <td align="center"><a href="http://twitter.com/zaggino"><img src="https://avatars1.githubusercontent.com/u/1067319?v=4" width="70px;" alt=""/><br /><sub><b>Martin Zagora</b></sub></a><br /><a href="#ideas-zaggino" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/olavoparno/istanbul-badges-readme/issues?q=author%3Azaggino" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/engineervix"><img src="https://avatars3.githubusercontent.com/u/7713776?v=4" width="70px;" alt=""/><br /><sub><b>Victor Miti</b></sub></a><br /><a href="https://github.com/olavoparno/istanbul-badges-readme/issues?q=author%3Aengineervix" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="http://signalwerk.ch"><img src="https://avatars1.githubusercontent.com/u/992878?v=4" width="70px;" alt=""/><br /><sub><b>Stefan Huber</b></sub></a><br /><a href="#question-signalwerk" title="Answering Questions">💬</a> <a href="https://github.com/olavoparno/istanbul-badges-readme/commits?author=signalwerk" title="Documentation">📖</a></td>
   </tr>
 </table>
 
