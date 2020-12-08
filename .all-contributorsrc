@@ -58,6 +58,16 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "signalwerk",
+      "name": "Stefan Huber",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/992878?v=4",
+      "profile": "http://signalwerk.ch",
+      "contributions": [
+        "question",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
