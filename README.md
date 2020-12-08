@@ -25,9 +25,9 @@
 ## Example markup (paste it anywhere in your README.md)
 
 ```markdown
-| Statements                | Branches                | Functions                | Lines                |
-| ------------------------- | ----------------------- | ------------------------ | -------------------- |
-| ![Statements](#statements#) | ![Branches](#branches#) | ![Functions](#functions#) | ![Lines](#lines#) |
+| Statements                  | Branches                | Functions                 | Lines                |
+| --------------------------- | ----------------------- | ------------------------- | -------------------- |
+| ![Statements](#statements#) | ![Branches](#branches#) | ![Functions](#functions#) | ![Lines](#lines#)    |
 ```
 
 - The table is **optional**, the only markup that matters are the following:
@@ -47,7 +47,7 @@
 
 ### Requirements
 
-- **\*Must** have at least one of the [before mentioned markup items](<#example-markup-(paste-it-anywhere-in-your-README.md)>);
+- **Must** have at least one of the [before mentioned markup items](<#example-markup-(paste-it-anywhere-in-your-README.md)>);
 - You should have **json-summary** as a **coverageReporter** in your tests configuration;
 - For example, if you are using Jest, configuration should either be within `package.json` or inside your jest config file i.e. `jest.config.js` or `jestconfig.json` as shown below:
 
