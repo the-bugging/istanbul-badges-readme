@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/olavoparno/istanbul-badges-readme/compare/v1.0.6...v1.1.0) (2020-12-09)
+
+
+### Features
+
+* **project:** add silent argument n other adjusts ([c465f91](https://github.com/olavoparno/istanbul-badges-readme/commit/c465f91eca99412b954b2ec0451380c4942d8ac3))
+
 ### [1.0.6](https://github.com/olavoparno/istanbul-badges-readme/compare/v1.0.5...v1.0.6) (2020-12-08)
 
 
