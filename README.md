@@ -10,6 +10,8 @@
 
 ---
 
+#### Current Version: 1.1.0
+
 ## Table of Contents
 
 - [Example Markup](<#example-markup-(paste-it-anywhere-in-your-README.md)>)
@@ -17,7 +19,7 @@
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Using as a part of your githooks](#using-as-a-part-of-your-githooks)
+- [Usage as a part of your githooks](#usage-as-a-part-of-your-githooks)
 - [License](#license)
 
 ---
@@ -73,10 +75,16 @@
   npm run istanbul-badges-readme
 ```
 
-- With custom coverage directory:
+- Custom coverage directory? Use **--coverageDir** argument:
 
 ```bash
   npm run istanbul-badges-readme --coverageDir="./my-custom-coverage-directory"
+```
+
+- Want it without logging? Try silent mode with **--silent** argument:
+
+```bash
+  npm run istanbul-badges-readme --silent
 ```
 
 - Or add it to your **package.json** scripts as follows:
@@ -89,7 +97,7 @@
 
 ---
 
-## Using as a part of your githooks
+## Usage as a part of your githooks
 
 - If you want to have this run on the **pre-commit** hook and update the commit in place, just install husky and add the `pre-commit` script to your package.json.
 
