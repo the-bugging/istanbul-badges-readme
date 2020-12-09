@@ -1,25 +1,15 @@
 import fs from 'fs';
+import { getArgumentValue } from './arguments';
 import { hashesConst, readmePathConst, coveragePathConst } from './constants';
+import { logger } from './logger';
+
+const { logInfo } = logger();
 
 export const getCoveragePath = (path: string): string => {
   let coveragePath: string = path;
-  let argPath = '';
+  const argPath = getArgumentValue('coverageDir');
 
-  const args = process.argv
-    .filter((item) => {
-      if (item.indexOf('coverage') >= 0) {
-        return item;
-      }
-
-      return '';
-    })
-    .toString();
-
-  if (args) {
-    argPath = args.replace('--coverageDir=', '');
-  }
-
-  if (argPath && args.length > 0) {
+  if (argPath) {
     coveragePath = `${argPath}/coverage-summary.json`;
   }
 
@@ -38,11 +28,12 @@ export const doesReadmeFileExist = (readmePath: string): Promise<boolean | strin
 
 export const doesCoverageFileExist = (coveragePath: string): Promise<boolean | string> => {
   return new Promise((resolve, reject) => {
-    const doesItExist = fs.existsSync(getCoveragePath(coveragePath));
+    const currentCoveragePath = getCoveragePath(coveragePath);
+    const doesItExist = fs.existsSync(currentCoveragePath);
 
     if (doesItExist) return resolve(true);
 
-    return reject('Coverage file does not exist');
+    return reject(`Coverage file does not exist in ${currentCoveragePath}`);
   });
 };
 
@@ -71,23 +62,23 @@ export const doestReadmeHashExist = (readmePath: string): Promise<boolean | stri
 };
 
 export const checkConfig = (): Promise<void> => {
-  console.log('Info: 1. Config check process started');
+  logInfo('Info: 1. Config check process started');
 
   return doesReadmeFileExist(readmePathConst)
     .then(() => {
-      console.log('- Readme file exists... ✔️.');
+      logInfo('- Readme file exists... ✔️.');
     })
     .then(() => doesCoverageFileExist(coveragePathConst))
     .then(() => {
-      console.log('- Coverage file exists... ✔️.');
+      logInfo('- Coverage file exists... ✔️.');
     })
     .then(() => doesCoverageHashesExist(coveragePathConst))
     .then(() => {
-      console.log('- Coverage hashes exist... ✔️.');
+      logInfo('- Coverage hashes exist... ✔️.');
     })
     .then(() => doestReadmeHashExist(readmePathConst))
     .then(() => {
-      console.log('- Readme hashes exist... ✔️.');
+      logInfo('- Readme hashes exist... ✔️.');
     })
-    .then(() => console.log('Info: 1. Config check process ended'));
+    .then(() => logInfo('Info: 1. Config check process ended'));
 };

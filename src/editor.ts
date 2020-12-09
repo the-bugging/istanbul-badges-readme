@@ -1,9 +1,12 @@
 import fs from 'fs';
 import { readmePathConst, coveragePathConst, hashesConst, coverageUrlConst } from './constants';
+import { logger } from './logger';
 import { TColors, THashes, TReport } from './types';
 
+const { logInfo } = logger();
+
 export const getReadmeHashes = (readmeFile: string): THashes[] => {
-  console.log('- Getting readme hashes...');
+  logInfo('- Getting readme hashes...');
 
   const readmeHashes = hashesConst.coverage.map((hash) => {
     if (readmeFile.includes(`![${hash.value}]`)) {
@@ -30,7 +33,7 @@ export const getCoverageColor = (coverage: number): TColors => {
 };
 
 export const getCoverageBadge = (coverageFile: string, hashKey: string): string | boolean => {
-  console.log(`- Getting coverage badge url for ${hashKey}...`);
+  logInfo(`- Getting coverage badge url for ${hashKey}...`);
 
   try {
     const parsedCoverage: TReport = JSON.parse(coverageFile);
@@ -51,7 +54,7 @@ export const getCoverageBadge = (coverageFile: string, hashKey: string): string 
 export const getNewReadme = (readmeFile: string, coverageFile: string) => (
   readmeHashes: THashes[],
 ): Promise<string> => {
-  console.log('- Getting new readme data...');
+  logInfo('- Getting new readme data...');
 
   let newReadmeFile = readmeFile;
 
@@ -80,7 +83,7 @@ export const getNewReadme = (readmeFile: string, coverageFile: string) => (
 };
 
 export const writeNewReadme = (readmePath: string) => (newReadmeData: string): boolean | void => {
-  console.log('- Writing new readme data...');
+  logInfo('- Writing new readme data...');
 
   try {
     return fs.writeFileSync(readmePath, newReadmeData, 'utf8');
@@ -90,7 +93,7 @@ export const writeNewReadme = (readmePath: string) => (newReadmeData: string): b
 };
 
 export const editReadme = (): Promise<void> => {
-  console.log('Info: 2. Editor process started');
+  logInfo('Info: 2. Editor process started');
 
   const readmeFile = fs.readFileSync(readmePathConst, 'utf-8');
   const coverageFile = fs.readFileSync(coveragePathConst, 'utf8');
@@ -99,5 +102,5 @@ export const editReadme = (): Promise<void> => {
     .then(getReadmeHashes)
     .then(getNewReadme(readmeFile, coverageFile))
     .then(writeNewReadme(readmePathConst))
-    .then(() => console.log('Info: 2. Editor process ended'));
+    .then(() => logInfo('Info: 2. Editor process ended'));
 };
