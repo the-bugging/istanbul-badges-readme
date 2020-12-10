@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/olavoparno/istanbul-badges-readme/compare/v1.1.0...v1.2.0) (2020-12-10)
+
+
+### Features
+
+* **examples:** add jest n mocha examples ([36a0505](https://github.com/olavoparno/istanbul-badges-readme/commit/36a05057af59060d621695c75caf973a7cf4979c))
+
 ## [1.1.0](https://github.com/olavoparno/istanbul-badges-readme/compare/v1.0.6...v1.1.0) (2020-12-09)
 
 
