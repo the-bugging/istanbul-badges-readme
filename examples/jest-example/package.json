@@ -1,0 +1,37 @@
+{
+  "name": "jest-example",
+  "version": "1.0.0",
+  "description": "Jest with coverage example",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "cover": "jest --coverage",
+    "make-badges": "istanbul-badges-readme",
+    "make-badges-silent": "istanbul-badges-readme --silent",
+    "make-badges-custom-dir": "istanbul-badges-readme --coverageDir='./my-custom-coverage'"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run cover && npm run make-badges && git add 'README.md'"
+    }
+  },
+  "jest": {
+    "coverageReporters": [
+      "json-summary"
+    ],
+    "transform": {
+      "^.+\\.(t|j)sx?$": "ts-jest"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^26.0.18",
+    "husky": "^4.3.5",
+    "istanbul-badges-readme": "^1.1.0",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.4.4",
+    "typescript": "^4.1.2"
+  }
+}

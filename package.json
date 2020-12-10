@@ -9,7 +9,7 @@
     "build": "rm -rf lib/ && tsc",
     "start": "npm run build && node lib/index.js",
     "start:dev": "nodemon",
-    "release": "standard-version",
+    "release": "npm run cover && standard-version --no-verify",
     "make-badges": "node lib/index.js"
   },
   "main": "lib/index.js",
@@ -41,11 +41,24 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint"
+      "pre-commit": "npm run lint && npm run cover"
     }
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+  "jest": {
+    "coverageReporters": [
+      "json-summary"
+    ],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "modulePathIgnorePatterns": [
+      "/node_modules/",
+      "/examples/"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/examples/"
+    ]
   },
   "devDependencies": {
     "@types/jest": "^26.0.17",

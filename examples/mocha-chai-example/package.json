@@ -1,0 +1,41 @@
+{
+  "name": "mocha-chai-example",
+  "version": "1.0.0",
+  "description": "Mocha/Chai with coverage example",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -r ts-node/register './*.spec.ts'",
+    "cover": "nyc mocha -r ts-node/register './*.spec.ts'",
+    "make-badges": "istanbul-badges-readme",
+    "make-badges-silent": "istanbul-badges-readme --silent",
+    "make-badges-custom-dir": "istanbul-badges-readme --coverageDir='./my-custom-coverage'"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run cover && npm run make-badges && git add 'README.md'"
+    }
+  },
+  "nyc": {
+    "extension": [
+      ".ts"
+    ],
+    "reporter": [
+      "json-summary"
+    ],
+    "all": true
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chai": "^4.2.14",
+    "@types/mocha": "^8.2.0",
+    "chai": "^4.2.0",
+    "husky": "^4.3.5",
+    "istanbul-badges-readme": "^1.1.0",
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.2"
+  }
+}

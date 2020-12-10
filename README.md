@@ -10,21 +10,23 @@
 
 ---
 
-#### Current Version: 1.1.0
+#### Current Version: 1.2.0
 
 ## Table of Contents
 
-- [Example Markup](<#example-markup-(paste-it-anywhere-in-your-README.md)>)
-- [Example Running](#example-running)
+- [Markup example](<#markup-example-(paste-it-anywhere-in-your-README.md)>)
+- [Running example](#running-example)
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Usage as a part of your githooks](#usage-as-a-part-of-your-githooks)
+- [See more examples](#see-more-examples)
+- [Contributors](#contributors)
 - [License](#license)
 
 ---
 
-## Example markup (paste it anywhere in your README.md)
+## Markup example (paste it anywhere in your README.md)
 
 ```markdown
 | Statements                  | Branches                | Functions                 | Lines                |
@@ -41,7 +43,7 @@
 
 ---
 
-## Example running
+## Running example
 
 ![Example](./assets/readme-gif.gif)
 
@@ -56,6 +58,8 @@
 ```json
   "coverageReporters": ["json-summary"]
 ```
+
+- See more in the [examples](./examples/README.md).
 
 ---
 
@@ -118,6 +122,12 @@
 ```
 
 3. Git Commit and Push. Just use your workflow as usual. If your tests fail, no commit. If they pass, update the README.md and add the file to the commit. Nice!
+
+---
+
+## See more examples
+
+[Examples folder](./examples/README.md)
 
 ---
 
