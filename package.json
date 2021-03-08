@@ -4,12 +4,12 @@
   "description": "Creates README badges from istanbul coverage report",
   "scripts": {
     "test": "jest",
-    "cover": "npm run test -- --coverage",
+    "cover": "CI=TRUE npm run test -- --coverage",
     "lint": "eslint 'src/**/*.{js,ts,tsx}' --quiet --fix",
     "build": "rm -rf lib/ && tsc",
     "start": "npm run build && node lib/index.js",
     "start:dev": "nodemon",
-    "release": "npm run cover && standard-version --no-verify",
+    "release": "standard-version",
     "make-badges": "node lib/index.js"
   },
   "main": "lib/index.js",
@@ -41,12 +41,13 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint && npm run cover"
+      "pre-commit": "npm run lint && npm run cover && npm run build && npm run make-badges"
     }
   },
   "jest": {
     "coverageReporters": [
-      "json-summary"
+      "json-summary",
+      "lcov"
     ],
     "transform": {
       "^.+\\.ts$": "ts-jest"
