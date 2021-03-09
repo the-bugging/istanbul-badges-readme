@@ -7,6 +7,8 @@ describe('Tests istanbul badges readme', () => {
   });
 
   it('should run mocked badger correctly from start to finish', async () => {
+    console.info = jest.fn();
+
     const consoleSpy = jest.spyOn(console, 'info');
 
     const checkConfig = () => Promise.resolve();
@@ -27,6 +29,9 @@ describe('Tests istanbul badges readme', () => {
   });
 
   it('should run mocked badger with error on checking config', async () => {
+    console.info = jest.fn();
+    console.error = jest.fn();
+
     const consoleSpyInfo = jest.spyOn(console, 'info');
     const consoleSpyError = jest.spyOn(console, 'error');
 
@@ -56,16 +61,8 @@ describe('Tests istanbul badges readme', () => {
   });
 
   it('should run badger correctly from start to finish', async () => {
-    const consoleSpy = jest.spyOn(console, 'info');
+    console.info = jest.fn();
 
-    await badger();
-
-    expect(consoleSpy).toHaveBeenCalledTimes(2);
-    expect(consoleSpy).toHaveBeenNthCalledWith(1, 'Info: 0. Istanbul Badges Readme process started');
-    expect(consoleSpy).toHaveBeenNthCalledWith(2, 'Info: 0. Istanbul Badges Readme process finished');
-  });
-
-  it('should run badger correctly from start to finish', async () => {
     const consoleSpy = jest.spyOn(console, 'info');
 
     await badger();

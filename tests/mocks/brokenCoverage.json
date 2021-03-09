@@ -1,0 +1,26 @@
+{
+  "bad": {
+    "total": 132,
+    "covered": 126,
+    "skipped": 0,
+    "pct": 95.45
+  },
+  "key": {
+    "total": 157,
+    "covered": 151,
+    "skipped": 0,
+    "pct": 96.18
+  },
+  "sasa": {
+    "total": 44,
+    "covered": 44,
+    "skipped": 0,
+    "pct": 100
+  },
+  "sese": {
+    "total": 30,
+    "covered": 23,
+    "skipped": 0,
+    "pct": 76.67
+  }
+}

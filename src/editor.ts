@@ -38,7 +38,7 @@ export const getCoverageBadge = (coverageFile: string, hashKey: string): string 
   try {
     const parsedCoverage: TReport = JSON.parse(coverageFile);
 
-    if (!parsedCoverage.total && parsedCoverage.total[hashKey]) {
+    if (!parsedCoverage.total || !parsedCoverage.total[hashKey]) {
       return false;
     }
 

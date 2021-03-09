@@ -4,7 +4,7 @@
   "description": "Creates README badges from istanbul coverage report",
   "scripts": {
     "test": "jest",
-    "cover": "CI=TRUE npm run test -- --coverage",
+    "cover": "npm run test -- --coverage",
     "lint": "eslint 'src/**/*.{js,ts,tsx}' --quiet --fix",
     "build": "rm -rf lib/ && tsc",
     "start": "npm run build && node lib/index.js",
@@ -41,7 +41,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint && npm run cover && npm run build && npm run make-badges"
+      "pre-commit": "npm run lint && npm run cover && npm run build && npm run make-badges && git add 'README.md'"
     }
   },
   "jest": {

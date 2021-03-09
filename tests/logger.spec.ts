@@ -6,6 +6,10 @@ describe('Tests logger helper', () => {
   });
 
   it('should log everything correctly', () => {
+    console.info = jest.fn();
+    console.warn = jest.fn();
+    console.error = jest.fn();
+
     const infoSpy = jest.spyOn(console, 'info');
     const warnSpy = jest.spyOn(console, 'warn');
     const errorSpy = jest.spyOn(console, 'error');
