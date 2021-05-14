@@ -4,8 +4,8 @@
 
 > Creates README badges from istanbul coverage report
 
-| Statements                | Branches                | Functions                | Lines                |
-| ------------------------- | ----------------------- | ------------------------ | -------------------- |
+| Statements                                                                  | Branches                                                                  | Functions                                                                  | Lines                                                                  |
+| --------------------------------------------------------------------------- | ------------------------------------------------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | ![Statements](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg) | ![Branches](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg) | ![Functions](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg) | ![Lines](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg) |
 
 ---
@@ -29,9 +29,9 @@
 ## Markup example (paste it anywhere in your README.md)
 
 ```markdown
-| Statements                  | Branches                | Functions                 | Lines                |
-| --------------------------- | ----------------------- | ------------------------- | -------------------- |
-| ![Statements](#statements#) | ![Branches](#branches#) | ![Functions](#functions#) | ![Lines](#lines#)    |
+| Statements                  | Branches                | Functions                 | Lines             |
+| --------------------------- | ----------------------- | ------------------------- | ----------------- |
+| ![Statements](#statements#) | ![Branches](#branches#) | ![Functions](#functions#) | ![Lines](#lines#) |
 ```
 
 - The table is **optional**, the only markup that matters are the following:
@@ -152,11 +152,13 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://twitter.com/zaggino"><img src="https://avatars1.githubusercontent.com/u/1067319?v=4" width="70px;" alt=""/><br /><sub><b>Martin Zagora</b></sub></a><br /><a href="#ideas-zaggino" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/olavoparno/istanbul-badges-readme/issues?q=author%3Azaggino" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/engineervix"><img src="https://avatars3.githubusercontent.com/u/7713776?v=4" width="70px;" alt=""/><br /><sub><b>Victor Miti</b></sub></a><br /><a href="https://github.com/olavoparno/istanbul-badges-readme/issues?q=author%3Aengineervix" title="Bug reports">🐛</a></td>
     <td align="center"><a href="http://signalwerk.ch"><img src="https://avatars1.githubusercontent.com/u/992878?v=4" width="70px;" alt=""/><br /><sub><b>Stefan Huber</b></sub></a><br /><a href="#question-signalwerk" title="Answering Questions">💬</a> <a href="https://github.com/olavoparno/istanbul-badges-readme/commits?author=signalwerk" title="Documentation">📖</a></td>
-  </tr>
+    <td align="center"><a href="http://www.venturalp.com.br"><img src="https://avatars1.githubusercontent.com/u/11214357?v=4" width="70px;" alt=""/><br /><sub><b>Guilherme Ventura</b></sub></a><br /><a href="#ideas-venturalp" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/olavoparno/istanbul-badges-readme/commits?author=venturalp" title="Bug reports">🐛</a> <a href="https://github.com/olavoparno/istanbul-badges-readme/commits?author=venturalp" title="Code">💻</a></td>  
+</tr>
 </table>
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

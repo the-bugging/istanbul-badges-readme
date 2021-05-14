@@ -68,7 +68,18 @@
         "question",
         "doc"
       ]
-    }
+    },
+    {
+      "login": "venturalp",
+      "name": "Guilherme Ventura",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11214357?v=4",
+      "profile": "http://www.venturalp.com.br",
+      "contributions": [
+        "ideas",
+        "code",
+        "bug"
+      ]
+    },
   ],
   "contributorsPerLine": 7,
   "skipCi": true
