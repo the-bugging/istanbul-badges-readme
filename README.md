@@ -6,7 +6,7 @@
 
 | Statements                | Branches                | Functions                | Lines                |
 | ------------------------- | ----------------------- | ------------------------ | -------------------- |
-| ![Statements](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg) | ![Branches](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg) | ![Functions](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg) | ![Lines](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg) |
+| ![Statements](https://img.shields.io/badge/Coverage-99.43%25-brightgreen.svg) | ![Branches](https://img.shields.io/badge/Coverage-97.06%25-brightgreen.svg) | ![Functions](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg) | ![Lines](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg) |
 
 ---
 
@@ -83,6 +83,12 @@
 
 ```bash
   npm run istanbul-badges-readme --coverageDir="./my-custom-coverage-directory"
+```
+
+- Custom readme directory? Use **--readmeDir** argument:
+
+```bash
+  npm run istanbul-badges-readme --readmeDir="./my-custom-readme-directory"
 ```
 
 - Want it without logging? Try silent mode with **--silent** argument:
