@@ -84,8 +84,8 @@ export const getNewReadme = (readmeFile: string, coverageFile: string) => (
 };
 
 export const writeNewReadme = (readmePath: string) => (newReadmeData: string): boolean | void => {
+  logInfo('- Writing new readme data...');
   try {
-    console.log('writing file in', readmePath)
     return fs.writeFileSync(readmePath, newReadmeData, 'utf8');
   } catch {
     return false;
