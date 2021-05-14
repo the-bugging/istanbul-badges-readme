@@ -20,6 +20,6 @@ describe('test helpers file', () => {
   });
 
   it ('should fail to read an async file', async () => {
-    await readFileAsync('./foo/bar.biz', 'utf-8').catch(e => expect(e).toBeUndefined())
+    await readFileAsync('./foo/bar.biz', 'utf-8').catch(e => expect(e).toEqual('file not found: ./foo/bar.biz'))
   })
 })
