@@ -85,6 +85,12 @@
   npm run istanbul-badges-readme --coverageDir="./my-custom-coverage-directory"
 ```
 
+- Custom readme directory? Use **--readmeDir** argument:
+
+```bash
+  npm run istanbul-badges-readme --readmeDir="./my-custom-readme-directory"
+```
+
 - Want it without logging? Try silent mode with **--silent** argument:
 
 ```bash

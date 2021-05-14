@@ -2,23 +2,13 @@ import path from 'path';
 import {
   doesReadmeFileExist,
   doesCoverageFileExist,
-  getCoveragePath,
   doesCoverageHashesExist,
-  doestReadmeHashExist,
+  doesReadmeHashExist,
 } from '../src/validate';
 
 describe('Tests validate file', () => {
   afterEach(() => {
     jest.clearAllMocks();
-  });
-
-  it('should getCoveragePath from arguments', () => {
-    process.argv.push('--coverageDir=my-custom-dir');
-    const args = getCoveragePath('coverageDir');
-
-    expect(args).toEqual('my-custom-dir/coverage-summary.json');
-
-    process.argv.pop();
   });
 
   it('should throw when doesReadmeFileExist does not find file', async () => {
@@ -43,10 +33,10 @@ describe('Tests validate file', () => {
     });
   });
 
-  it("should throw when doestReadmeHashExist can't find a hash", async () => {
+  it("should throw when doesReadmeHashExist can't find a hash", async () => {
     const fakeReadmeFile = path.join(__dirname, '../tests/mocks/fakeReadmeFile.md');
 
-    doestReadmeHashExist(fakeReadmeFile).catch((error) => {
+    doesReadmeHashExist(fakeReadmeFile).catch((error) => {
       expect(error).toEqual('Readme does not contain the needed hashes');
     });
   });

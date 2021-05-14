@@ -1,5 +1,6 @@
 import fs from 'fs';
 import { readmePathConst, coveragePathConst, hashesConst, coverageUrlConst } from './constants';
+import { getCoveragePath, getReadmePath, readFileAsync } from './helpers';
 import { logger } from './logger';
 import { TColors, THashes, TReport } from './types';
 
@@ -84,7 +85,6 @@ export const getNewReadme = (readmeFile: string, coverageFile: string) => (
 
 export const writeNewReadme = (readmePath: string) => (newReadmeData: string): boolean | void => {
   logInfo('- Writing new readme data...');
-
   try {
     return fs.writeFileSync(readmePath, newReadmeData, 'utf8');
   } catch {
@@ -92,15 +92,14 @@ export const writeNewReadme = (readmePath: string) => (newReadmeData: string): b
   }
 };
 
-export const editReadme = (): Promise<void> => {
+export const editReadme = async (): Promise<void> => {
   logInfo('Info: 2. Editor process started');
 
-  const readmeFile = fs.readFileSync(readmePathConst, 'utf-8');
-  const coverageFile = fs.readFileSync(coveragePathConst, 'utf8');
+  const readmeFile = await readFileAsync(getReadmePath(readmePathConst), 'utf-8');
+  const coverageFile = await readFileAsync(getCoveragePath(coveragePathConst), 'utf8');
 
-  return Promise.resolve(readmeFile)
-    .then(getReadmeHashes)
+  return Promise.resolve(getReadmeHashes(readmeFile))
     .then(getNewReadme(readmeFile, coverageFile))
-    .then(writeNewReadme(readmePathConst))
+    .then(writeNewReadme(getReadmePath(readmePathConst)))
     .then(() => logInfo('Info: 2. Editor process ended'));
 };

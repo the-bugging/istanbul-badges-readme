@@ -1,20 +1,9 @@
 import fs from 'fs';
-import { getArgumentValue } from './arguments';
 import { hashesConst, readmePathConst, coveragePathConst } from './constants';
+import { getCoveragePath } from './helpers';
 import { logger } from './logger';
 
 const { logInfo } = logger();
-
-export const getCoveragePath = (path: string): string => {
-  let coveragePath: string = path;
-  const argPath = getArgumentValue('coverageDir');
-
-  if (argPath) {
-    coveragePath = `${argPath}/coverage-summary.json`;
-  }
-
-  return coveragePath;
-};
 
 export const doesReadmeFileExist = (readmePath: string): Promise<boolean | string> => {
   return new Promise((resolve, reject) => {
@@ -49,7 +38,7 @@ export const doesCoverageHashesExist = (coveragePath: string): Promise<boolean |
   });
 };
 
-export const doestReadmeHashExist = (readmePath: string): Promise<boolean | string> => {
+export const doesReadmeHashExist = (readmePath: string): Promise<boolean | string> => {
   return new Promise((resolve, reject) => {
     const readmeFile = fs.readFileSync(readmePath);
 
@@ -76,7 +65,7 @@ export const checkConfig = (): Promise<void> => {
     .then(() => {
       logInfo('- Coverage hashes exist... ✔️.');
     })
-    .then(() => doestReadmeHashExist(readmePathConst))
+    .then(() => doesReadmeHashExist(readmePathConst))
     .then(() => {
       logInfo('- Readme hashes exist... ✔️.');
     })
