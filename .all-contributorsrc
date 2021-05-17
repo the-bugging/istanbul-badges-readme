@@ -79,6 +79,15 @@
         "code",
         "bug"
       ]
+    },
+    {
+      "login": "mh1622",
+      "name": "Matt Hodges",
+      "avatar_url": "https://avatars.githubusercontent.com/u/59019985?v=4",
+      "profile": "https://github.com/mh1622",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
