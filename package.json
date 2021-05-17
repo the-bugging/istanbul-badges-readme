@@ -19,7 +19,7 @@
   "files": [
     "LICENSE",
     "README.md",
-    "lib/"
+    "lib"
   ],
   "keywords": [
     "coverage",
