@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/olavoparno/istanbul-badges-readme/compare/v1.2.2...v1.3.0) (2021-05-17)
+
+
+### Features
+
+* **arguments:** include custom readme directory argument ([361cff4](https://github.com/olavoparno/istanbul-badges-readme/commit/361cff42aa3f38033672a58bec759265ff852051))
+
+
+### Bug Fixes
+
+* try to fix build and install problems ([907d0bf](https://github.com/olavoparno/istanbul-badges-readme/commit/907d0bfd6c5f2d532e094848cbc0ef6f399c1691))
+* **editor:** change to the correct log ([b830ee5](https://github.com/olavoparno/istanbul-badges-readme/commit/b830ee5ff8b71ace266e367fb2fde907379f2476))
+* **helpers:** improve readfileasync log ([055d553](https://github.com/olavoparno/istanbul-badges-readme/commit/055d5534aa00b954f467d9260c556fed5ad05eba))
+
 ### [1.2.2](https://github.com/olavoparno/istanbul-badges-readme/compare/v1.2.1...v1.2.2) (2021-05-11)
 
 ### [1.2.1](https://github.com/olavoparno/istanbul-badges-readme/compare/v1.2.0...v1.2.1) (2021-03-08)
