@@ -1,13 +1,13 @@
 import fs from 'fs';
 import { hashesConst, readmePathConst, coveragePathConst } from './constants';
-import { getCoveragePath } from './helpers';
+import { getCoveragePath, getReadmePath } from './helpers';
 import { logger } from './logger';
 
 const { logInfo } = logger();
 
 export const doesReadmeFileExist = (readmePath: string): Promise<boolean | string> => {
   return new Promise((resolve, reject) => {
-    const doesItExist = fs.existsSync(readmePath);
+    const doesItExist = fs.existsSync(getReadmePath(readmePath));
 
     if (doesItExist) return resolve(true);
 
@@ -40,7 +40,7 @@ export const doesCoverageHashesExist = (coveragePath: string): Promise<boolean |
 
 export const doesReadmeHashExist = (readmePath: string): Promise<boolean | string> => {
   return new Promise((resolve, reject) => {
-    const readmeFile = fs.readFileSync(readmePath);
+    const readmeFile = fs.readFileSync(getReadmePath(readmePath));
 
     hashesConst.coverage.forEach((hash) => {
       if (readmeFile.includes(`![${hash.value}]`)) return resolve(true);
