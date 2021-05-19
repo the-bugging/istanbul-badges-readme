@@ -1,6 +1,6 @@
 import fs from 'fs';
 import { hashesConst, readmePathConst, coveragePathConst } from './constants';
-import { getCoveragePath } from './helpers';
+import { getCoveragePath, getReadmePath } from './helpers';
 import { logger } from './logger';
 
 const { logInfo } = logger();
@@ -53,19 +53,19 @@ export const doesReadmeHashExist = (readmePath: string): Promise<boolean | strin
 export const checkConfig = (): Promise<void> => {
   logInfo('Info: 1. Config check process started');
 
-  return doesReadmeFileExist(readmePathConst)
+  return doesReadmeFileExist(getReadmePath(readmePathConst))
     .then(() => {
       logInfo('- Readme file exists... ✔️.');
     })
-    .then(() => doesCoverageFileExist(coveragePathConst))
+    .then(() => doesCoverageFileExist(getCoveragePath(coveragePathConst)))
     .then(() => {
       logInfo('- Coverage file exists... ✔️.');
     })
-    .then(() => doesCoverageHashesExist(coveragePathConst))
+    .then(() => doesCoverageHashesExist(getCoveragePath(coveragePathConst)))
     .then(() => {
       logInfo('- Coverage hashes exist... ✔️.');
     })
-    .then(() => doesReadmeHashExist(readmePathConst))
+    .then(() => doesReadmeHashExist(getReadmePath(readmePathConst)))
     .then(() => {
       logInfo('- Readme hashes exist... ✔️.');
     })
