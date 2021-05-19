@@ -28,7 +28,7 @@ export const doesCoverageFileExist = (coveragePath: string): Promise<boolean | s
 
 export const doesCoverageHashesExist = (coveragePath: string): Promise<boolean | string> => {
   return new Promise((resolve, reject) => {
-    const coverageFile = fs.readFileSync(coveragePath);
+    const coverageFile = fs.readFileSync(getCoveragePath(coveragePath));
 
     hashesConst.coverage.forEach((hash) => {
       if (coverageFile.includes(hash.key)) return resolve(true);
