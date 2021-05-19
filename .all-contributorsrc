@@ -88,6 +88,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "Tlahey",
+      "name": "Antoine Vendeville",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2856778?v=4",
+      "profile": "https://github.com/Tlahey",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
