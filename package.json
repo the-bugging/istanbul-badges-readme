@@ -40,11 +40,6 @@
     "type": "git",
     "url": "git://github.com/olavoparno/istanbul-badges-readme.git"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint && npm run cover && npm run build && npm run make-badges && git add 'README.md'"
-    }
-  },
   "jest": {
     "coverageReporters": [
       "json-summary",
