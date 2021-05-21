@@ -19,7 +19,7 @@ export const getReadmeHashes = (readmeFile: string): THashes[] => {
 
   const filteredHashes = readmeHashes.filter(Boolean);
 
-  return (filteredHashes as unknown) as THashes[];
+  return filteredHashes as unknown as THashes[];
 };
 
 export const getCoverageColor = (coverage: number): TColors => {
@@ -52,45 +52,47 @@ export const getCoverageBadge = (coverageFile: string, hashKey: string): string 
   }
 };
 
-export const getNewReadme = (readmeFile: string, coverageFile: string) => (
-  readmeHashes: THashes[],
-): Promise<string> => {
-  logInfo('- Getting new readme data...');
+export const getNewReadme =
+  (readmeFile: string, coverageFile: string) =>
+  (readmeHashes: THashes[]): Promise<string> => {
+    logInfo('- Getting new readme data...');
 
-  let newReadmeFile = readmeFile;
+    let newReadmeFile = readmeFile;
 
-  return new Promise((resolve, reject) => {
-    readmeHashes.forEach((hash) => {
-      const coverageBadge = getCoverageBadge(coverageFile, hash.key);
+    return new Promise((resolve, reject) => {
+      readmeHashes.forEach((hash) => {
+        const coverageBadge = getCoverageBadge(coverageFile, hash.key);
 
-      if (!coverageBadge) {
-        reject('There has been an error getting new coverage badges');
-      }
+        if (!coverageBadge) {
+          reject('There has been an error getting new coverage badges');
+        }
 
-      const pattern = `![${hash.value}]`;
-      const enpatterned = (value: string) => `${pattern}(${value})`;
+        const pattern = `![${hash.value}]`;
+        const enpatterned = (value: string) => `${pattern}(${value})`;
 
-      const startIndex = newReadmeFile.indexOf(pattern);
-      const valueToChangeStart = newReadmeFile.slice(startIndex + pattern.length);
+        const startIndex = newReadmeFile.indexOf(pattern);
+        const valueToChangeStart = newReadmeFile.slice(startIndex + pattern.length);
 
-      const valueToChangeIndex = valueToChangeStart.indexOf(')');
-      const valueToChangeFinal = valueToChangeStart.substring(1, valueToChangeIndex);
+        const valueToChangeIndex = valueToChangeStart.indexOf(')');
+        const valueToChangeFinal = valueToChangeStart.substring(1, valueToChangeIndex);
 
-      newReadmeFile = newReadmeFile.replace(enpatterned(valueToChangeFinal), enpatterned(coverageBadge as string));
+        newReadmeFile = newReadmeFile.replace(enpatterned(valueToChangeFinal), enpatterned(coverageBadge as string));
+      });
+
+      resolve(newReadmeFile);
     });
+  };
 
-    resolve(newReadmeFile);
-  });
-};
-
-export const writeNewReadme = (readmePath: string) => (newReadmeData: string): boolean | void => {
-  logInfo('- Writing new readme data...');
-  try {
-    return fs.writeFileSync(readmePath, newReadmeData, 'utf8');
-  } catch {
-    return false;
-  }
-};
+export const writeNewReadme =
+  (readmePath: string) =>
+  (newReadmeData: string): boolean | void => {
+    logInfo('- Writing new readme data...');
+    try {
+      return fs.writeFileSync(readmePath, newReadmeData, 'utf8');
+    } catch {
+      return false;
+    }
+  };
 
 export const editReadme = async (): Promise<void> => {
   logInfo('Info: 2. Editor process started');
