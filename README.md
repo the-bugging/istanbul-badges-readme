@@ -10,8 +10,6 @@
 
 ---
 
-#### Current Version: 1.2.0
-
 ## Table of Contents
 
 - [Markup example](<#markup-example-(paste-it-anywhere-in-your-README.md)>)
