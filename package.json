@@ -11,7 +11,8 @@
     "start": "npm run build && node lib/index.js",
     "start:dev": "nodemon",
     "release": "standard-version",
-    "make-badges": "node lib/index.js"
+    "make-badges": "node lib/index.js",
+    "prepublishOnly": "npm run build"
   },
   "main": "lib/index.js",
   "bin": {
