@@ -3,7 +3,7 @@ import { hashesConst, readmePathConst, coveragePathConst } from './constants';
 import { getCoveragePath, getReadmePath } from './helpers';
 import { logger } from './logger';
 
-const { logInfo, logError } = logger();
+const { logInfo } = logger();
 
 export const doesReadmeFileExist = (readmePath: string): Promise<boolean | string> => {
   return new Promise((resolve, reject) => {
@@ -69,6 +69,5 @@ export const checkConfig = (): Promise<void> => {
     .then(() => {
       logInfo('- Readme hashes exist... ✔️.');
     })
-    .then(() => logInfo('Info: 1. Config check process ended'))
-    .catch(error => logError(`Info: 1. Config error - ${error}`))
+    .then(() => logInfo('Info: 1. Config check process ended'));
 };
