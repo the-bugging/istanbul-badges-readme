@@ -5,12 +5,11 @@ export const logger = (): {
   logWarn: (message: string) => void;
   logError: (message: string) => void;
 } => {
-  const customLog = (level: (message?: unknown, ...optionalParams: unknown[]) => void, isSupressable: boolean) => (
-    message: string,
-  ) => {
-    const isSupressed = isSupressable && getArgumentValue('silent');
-    return !isSupressed && level(message);
-  };
+  const customLog =
+    (level: (message?: unknown, ...optionalParams: unknown[]) => void, isSupressable: boolean) => (message: string) => {
+      const isSupressed = isSupressable && getArgumentValue('silent');
+      return !isSupressed && level(message);
+    };
 
   return {
     logInfo: customLog(console.info, true),

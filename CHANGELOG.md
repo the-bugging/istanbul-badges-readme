@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.3](https://github.com/olavoparno/istanbul-badges-readme/compare/v1.3.1...v1.3.3) (2021-05-21)
+
+
+### Bug Fixes
+
+* remove husky from package ([6d3ed63](https://github.com/olavoparno/istanbul-badges-readme/commit/6d3ed63d9ca153c1f16da6508e816ae1cbf03171))
+* update husky settings ([a5959a9](https://github.com/olavoparno/istanbul-badges-readme/commit/a5959a97ae53baa4908f84370458dbe35e188088))
+* update prettier lint ([e0f0172](https://github.com/olavoparno/istanbul-badges-readme/commit/e0f01725b859d82c8c5d872b08b48087162cb0fe))
+
 ### [1.3.2](https://github.com/olavoparno/istanbul-badges-readme/compare/v1.3.1...v1.3.2) (2021-05-19)
 
 ### [1.3.1](https://github.com/olavoparno/istanbul-badges-readme/compare/v1.3.0...v1.3.1) (2021-05-19)
