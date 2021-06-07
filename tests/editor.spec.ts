@@ -39,7 +39,7 @@ describe('Tests editor', () => {
     const brokenJsonCoverageBadges = getCoverageBadge(brokenJsonCoverageFile, 'nonExistingHash');
     const wrongJsonCoverageBadges = getCoverageBadge('wrong json', 'nonExistingHash');
 
-    expect(existingCoverageBadge).toEqual('https://img.shields.io/badge/Coverage-95.45%25-brightgreen.svg');
+    expect(existingCoverageBadge).toEqual('https://img.shields.io/badge/bad-95.45%25-brightgreen.svg');
     expect(nonExistingCoverageBadges).toBeFalsy();
     expect(brokenJsonCoverageBadges).toBeFalsy();
     expect(wrongJsonCoverageBadges).toBeFalsy();
