@@ -46,7 +46,7 @@ export const getCoverageBadge = (coverageFile: string, hashKey: string): string 
     const coverage: number = parsedCoverage.total[hashKey].pct;
     const color = getCoverageColor(coverage);
 
-    return coverageUrlConst(coverage, color);
+    return coverageUrlConst(hashKey, coverage, color);
   } catch {
     return false;
   }
