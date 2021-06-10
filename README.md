@@ -12,34 +12,15 @@
 
 ## Table of Contents
 
-- [Markup example](<#markup-example-(paste-it-anywhere-in-your-README.md)>)
 - [Running example](#running-example)
 - [Requirements](#requirements)
 - [Installation](#installation)
-- [Usage](#usage)
+- [Simple Usage](#simple-usage)
+- [Advanced Usage](#advanced-usage)
 - [Usage as a part of your githooks](#usage-as-a-part-of-your-githooks)
 - [See more examples](#see-more-examples)
 - [Contributors](#contributors)
 - [License](#license)
-
----
-
-## Markup example (paste it anywhere in your README.md)
-
-```markdown
-| Statements                  | Branches                | Functions                 | Lines             |
-| --------------------------- | ----------------------- | ------------------------- | ----------------- |
-| ![Statements](#statements#) | ![Branches](#branches#) | ![Functions](#functions#) | ![Lines](#lines#) |
-```
-
-- The table is **optional**, the only markup that matters are the following:
-
-1. `![Statements](#statements#)`
-1. `![Branches](#branches#)`
-1. `![Functions](#functions#)`
-1. `![Lines](#lines#)`
-
----
 
 ## Running example
 
@@ -47,11 +28,11 @@
 
 ---
 
-### Requirements
+## Requirements
 
-- **Must** have at least one of the [before mentioned markup items](<#example-markup-(paste-it-anywhere-in-your-README.md)>);
+- First, of course, you **must** have a test runner such as Jest and Mocha;
 - You **must** have **json-summary** as a **coverageReporter** in your tests configuration;
-- For example, if you are using Jest, configuration should either be within `package.json` or inside your jest config file i.e. `jest.config.js` or `jestconfig.json` as shown below:
+- For example, if you are using Jest, configuration should either be within `package.json` or inside your jest config file i.e. `jest.config.js` or `jestconfig.json` as written below:
 
 ```json
   "coverageReporters": ["json-summary"]
@@ -63,19 +44,48 @@
 
 ## Installation
 
+- Install the library in your project as a devDependency:
+
 ```bash
   npm i -D istanbul-badges-readme
 ```
 
+- Add **at least one** of the below coverage hashes in your README file:
+
+  - `![Statements](#statements#)`
+  - `![Branches](#branches#)`
+  - `![Functions](#functions#)`
+  - `![Lines](#lines#)`
+
+- A simple example of all hashes being used in a table fashion markup:
+
+```markdown
+| Statements                  | Branches                | Functions                 | Lines             |
+| --------------------------- | ----------------------- | ------------------------- | ----------------- |
+| ![Statements](#statements#) | ![Branches](#branches#) | ![Functions](#functions#) | ![Lines](#lines#) |
+```
+
 ---
 
-## Usage
+## Simple Usage
 
 - Simply run it from the CLI as follows:
 
 ```bash
   npm run istanbul-badges-readme
 ```
+
+- Or add it to your **package.json** scripts as follows:
+
+```json
+"scripts": {
+  "make-badges": "istanbul-badges-readme",
+}
+```
+
+---
+
+## Advanced Usage
 
 - Custom coverage directory? Use **--coverageDir** argument:
 
@@ -99,14 +109,6 @@
 
 ```bash
   npm run istanbul-badges-readme --functionsLabel='Mis funciones!' --branchesLabel='Branches are troublesome!'
-```
-
-- Or add it to your **package.json** scripts as follows:
-
-```json
-"scripts": {
-  "make-badges": "istanbul-badges-readme",
-}
 ```
 
 ---
