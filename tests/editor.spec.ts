@@ -65,4 +65,15 @@ describe('Tests editor', () => {
 
     expect(hasItSucceeded).toBeFalsy();
   });
+
+  it('should accept custom label for hashKey', () => {
+    const fakeJsonCoveragePath = path.join(__dirname, '../tests/mocks/fakeBadCoverage.json');
+    const fakeJsonCoverageFile = fs.readFileSync(fakeJsonCoveragePath, 'utf-8');
+
+    process.argv.push('--badLabel=customBadLabel');
+
+    const customBadgeLabel = getCoverageBadge(fakeJsonCoverageFile, 'bad');
+
+    expect(customBadgeLabel).toEqual('https://img.shields.io/badge/customBadLabel-95.45%25-brightgreen.svg');
+  });
 });
