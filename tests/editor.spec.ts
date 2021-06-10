@@ -39,7 +39,7 @@ describe('Tests editor', () => {
     const brokenJsonCoverageBadges = getCoverageBadge(brokenJsonCoverageFile, 'nonExistingHash');
     const wrongJsonCoverageBadges = getCoverageBadge('wrong json', 'nonExistingHash');
 
-    expect(existingCoverageBadge).toEqual('https://img.shields.io/badge/Coverage-95.45%25-brightgreen.svg');
+    expect(existingCoverageBadge).toEqual('https://img.shields.io/badge/bad-95.45%25-brightgreen.svg');
     expect(nonExistingCoverageBadges).toBeFalsy();
     expect(brokenJsonCoverageBadges).toBeFalsy();
     expect(wrongJsonCoverageBadges).toBeFalsy();
@@ -64,5 +64,16 @@ describe('Tests editor', () => {
     );
 
     expect(hasItSucceeded).toBeFalsy();
+  });
+
+  it('should accept custom label for hashKey', () => {
+    const fakeJsonCoveragePath = path.join(__dirname, '../tests/mocks/fakeBadCoverage.json');
+    const fakeJsonCoverageFile = fs.readFileSync(fakeJsonCoveragePath, 'utf-8');
+
+    process.argv.push('--badLabel=customBadLabel');
+
+    const customBadgeLabel = getCoverageBadge(fakeJsonCoverageFile, 'bad');
+
+    expect(customBadgeLabel).toEqual('https://img.shields.io/badge/customBadLabel-95.45%25-brightgreen.svg');
   });
 });

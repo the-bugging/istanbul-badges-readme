@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/olavoparno/istanbul-badges-readme/compare/v1.3.4...v1.4.0) (2021-06-07)
+
+
+### Features
+
+* add default hashes in coverage badges ([90dff1e](https://github.com/olavoparno/istanbul-badges-readme/commit/90dff1e8040f76c2514eca96b1897ca2599d9beb))
+
 ### [1.3.4](https://github.com/olavoparno/istanbul-badges-readme/compare/v1.3.3...v1.3.4) (2021-05-21)
 
 ### [1.3.3](https://github.com/olavoparno/istanbul-badges-readme/compare/v1.3.1...v1.3.3) (2021-05-21)

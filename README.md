@@ -4,13 +4,11 @@
 
 > Creates README badges from istanbul coverage report
 
-| Statements                                                                  | Branches                                                                  | Functions                                                                  | Lines                                                                  |
-| --------------------------------------------------------------------------- | ------------------------------------------------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| ![Statements](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg) | ![Branches](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg) | ![Functions](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg) | ![Lines](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg) |
+| Statements                                                                    | Branches                                                                                       | Functions                                                                          | Lines                                                               |
+| ----------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| ![Statements](https://img.shields.io/badge/statements-100%25-brightgreen.svg) | ![Branches](https://img.shields.io/badge/Branches%20are%20troublesome!-100%25-brightgreen.svg) | ![Functions](https://img.shields.io/badge/Mis%20funciones!-100%25-brightgreen.svg) | ![Lines](https://img.shields.io/badge/lines-100%25-brightgreen.svg) |
 
 ---
-
-#### Current Version: 1.2.0
 
 ## Table of Contents
 
@@ -52,7 +50,7 @@
 ### Requirements
 
 - **Must** have at least one of the [before mentioned markup items](<#example-markup-(paste-it-anywhere-in-your-README.md)>);
-- You should have **json-summary** as a **coverageReporter** in your tests configuration;
+- You **must** have **json-summary** as a **coverageReporter** in your tests configuration;
 - For example, if you are using Jest, configuration should either be within `package.json` or inside your jest config file i.e. `jest.config.js` or `jestconfig.json` as shown below:
 
 ```json
@@ -95,6 +93,12 @@
 
 ```bash
   npm run istanbul-badges-readme --silent
+```
+
+- You may also create custom labeling for the badges using the corresponding hash and _Label_ e.g. _branchesLabel_ **--branchesLabel='Branches are troublesome!'**:
+
+```bash
+  npm run istanbul-badges-readme --functionsLabel='Mis funciones!' --branchesLabel='Branches are troublesome!'
 ```
 
 - Or add it to your **package.json** scripts as follows:
@@ -157,6 +161,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/mh1622"><img src="https://avatars.githubusercontent.com/u/59019985?v=4?s=70" width="70px;" alt=""/><br /><sub><b>Matt Hodges</b></sub></a><br /><a href="https://github.com/olavoparno/istanbul-badges-readme/issues?q=author%3Amh1622" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/Tlahey"><img src="https://avatars.githubusercontent.com/u/2856778?v=4?s=70" width="70px;" alt=""/><br /><sub><b>Antoine Vendeville</b></sub></a><br /><a href="https://github.com/olavoparno/istanbul-badges-readme/issues?q=author%3ATlahey" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/dutchenkoOleg"><img src="https://avatars.githubusercontent.com/u/16334642?v=4?s=70" width="70px;" alt=""/><br /><sub><b>Oleg Dutchenko</b></sub></a><br /><a href="https://github.com/olavoparno/istanbul-badges-readme/issues?q=author%3AdutchenkoOleg" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
