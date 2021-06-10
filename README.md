@@ -4,9 +4,9 @@
 
 > Creates README badges from istanbul coverage report
 
-| Statements                                                                  | Branches                                                                  | Functions                                                                  | Lines                                                                  |
-| --------------------------------------------------------------------------- | ------------------------------------------------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| ![Statements](https://img.shields.io/badge/statements-100%25-brightgreen.svg) | ![Branches](https://img.shields.io/badge/branches-100%25-brightgreen.svg) | ![Functions](https://img.shields.io/badge/functions-100%25-brightgreen.svg) | ![Lines](https://img.shields.io/badge/lines-100%25-brightgreen.svg) |
+| Statements                                                                    | Branches                                                                                       | Functions                                                                          | Lines                                                               |
+| ----------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| ![Statements](https://img.shields.io/badge/statements-100%25-brightgreen.svg) | ![Branches](https://img.shields.io/badge/Branches%20are%20troublesome!-100%25-brightgreen.svg) | ![Functions](https://img.shields.io/badge/Mis%20funciones!-100%25-brightgreen.svg) | ![Lines](https://img.shields.io/badge/lines-100%25-brightgreen.svg) |
 
 ---
 
@@ -50,7 +50,7 @@
 ### Requirements
 
 - **Must** have at least one of the [before mentioned markup items](<#example-markup-(paste-it-anywhere-in-your-README.md)>);
-- You should have **json-summary** as a **coverageReporter** in your tests configuration;
+- You **must** have **json-summary** as a **coverageReporter** in your tests configuration;
 - For example, if you are using Jest, configuration should either be within `package.json` or inside your jest config file i.e. `jest.config.js` or `jestconfig.json` as shown below:
 
 ```json
@@ -93,6 +93,12 @@
 
 ```bash
   npm run istanbul-badges-readme --silent
+```
+
+- You may also create custom labeling for the badges using the corresponding hash and _Label_ e.g. _branchesLabel_ **--branchesLabel='Branches are troublesome!'**:
+
+```bash
+  npm run istanbul-badges-readme --functionsLabel='Mis funciones!' --branchesLabel='Branches are troublesome!'
 ```
 
 - Or add it to your **package.json** scripts as follows:

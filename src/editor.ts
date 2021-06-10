@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { getArgumentValue } from './arguments';
 import { readmePathConst, coveragePathConst, hashesConst, coverageUrlConst } from './constants';
 import { getCoveragePath, getReadmePath, readFileAsync } from './helpers';
 import { logger } from './logger';
@@ -45,8 +46,10 @@ export const getCoverageBadge = (coverageFile: string, hashKey: string): string 
 
     const coverage: number = parsedCoverage.total[hashKey].pct;
     const color = getCoverageColor(coverage);
+    const customLabel = getArgumentValue(`${hashKey}Label`);
+    const badgeAlt = customLabel ? encodeURI(customLabel) : hashKey;
 
-    return coverageUrlConst(hashKey, coverage, color);
+    return coverageUrlConst(badgeAlt, coverage, color);
   } catch {
     return false;
   }
