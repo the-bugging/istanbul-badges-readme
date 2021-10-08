@@ -73,7 +73,7 @@ describe('Tests editor', () => {
     expect(customBadgeLabel).toEqual('https://img.shields.io/badge/customBadLabel-95.45%25-brightgreen.svg');
   });
 
-  it('should have no errors using --ci when readme matches the coverage summary', () => {
+  it('should have no errors using --ci when readme matches the coverage summary', (done) => {
     const accurateCoveragePath = path.join(__dirname, '../tests/mocks/accurateCoverage.json');
     const accurateCoverageFile = fs.readFileSync(accurateCoveragePath, 'utf-8');
 
@@ -84,12 +84,12 @@ describe('Tests editor', () => {
 
     process.argv.push('--ci');
 
-    return expect(getNewReadme(accurateReadmeFile, accurateCoverageFile)(readmeHashes)).resolves.toBe(
-      accurateReadmeFile,
-    );
+    expect(getNewReadme(accurateReadmeFile, accurateCoverageFile)(readmeHashes)).resolves.toBe(accurateReadmeFile);
+
+    done();
   });
 
-  it('should throw error using --ci, when readme does not match coverage summary', () => {
+  it('should throw error using --ci, when readme does not match coverage summary', (done) => {
     const inaccurateCoveragePath = path.join(__dirname, '../tests/mocks/inaccurateCoverage.json');
     const inaccurateCoverageFile = fs.readFileSync(inaccurateCoveragePath, 'utf-8');
 
@@ -100,8 +100,10 @@ describe('Tests editor', () => {
 
     process.argv.push('--ci');
 
-    return expect(getNewReadme(accurateReadmeFile, inaccurateCoverageFile)(readmeHashes)).rejects.toMatch(
+    expect(getNewReadme(accurateReadmeFile, inaccurateCoverageFile)(readmeHashes)).rejects.toMatch(
       "The coverage badge has changed, which isn't allowed with the `ci` argument",
     );
+
+    done();
   });
 });

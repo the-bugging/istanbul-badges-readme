@@ -23,7 +23,7 @@ export const getReadmePath = (path: string): string => {
   return readmePath;
 };
 
-export const readFileAsync = async (path: string, encode: string): Promise<string> => {
+export const readFileAsync = async (path: string, encode: BufferEncoding): Promise<string> => {
   return new Promise((resolve, reject) => {
     fs.readFile(path, encode, (err, data) => {
       if (err) reject(`file not found: ${path}`);
