@@ -153,7 +153,7 @@ You can add this to your **package.json** as follows:
 }
 ```
 
-Where the script `make-badges:ci` will run your existing `make-badges` script and just adds `--ci` as an argument.
+Where the script `make-badges:ci` will run your existing `make-badges` script by just adding `--ci` as an argument.
 
 This is a useful addition/alternative to the githooks approach for some use cases such as larger codebases, slow computers etc, where it isn't always feasible to run all the tests and produce coverage on each commit.
 
