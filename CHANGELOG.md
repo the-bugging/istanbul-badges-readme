@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/olavoparno/istanbul-badges-readme/compare/v1.4.0...v1.5.0) (2021-10-08)
+
+
+### Features
+
+* add ci argument to fail if a badge changes ([57de3d6](https://github.com/olavoparno/istanbul-badges-readme/commit/57de3d6165fbdde4650e698089123d72376fd93d))
+* change badge label optionally ([9aaa8ab](https://github.com/olavoparno/istanbul-badges-readme/commit/9aaa8aba9265b4ea103cc19a1fb7a43247cd9ec9))
+
 ## [1.4.0](https://github.com/olavoparno/istanbul-badges-readme/compare/v1.3.4...v1.4.0) (2021-06-07)
 
 
