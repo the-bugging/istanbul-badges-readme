@@ -79,7 +79,14 @@ export const getNewReadme =
         const valueToChangeIndex = valueToChangeStart.indexOf(')');
         const valueToChangeFinal = valueToChangeStart.substring(1, valueToChangeIndex);
 
-        newReadmeFile = newReadmeFile.replace(enpatterned(valueToChangeFinal), enpatterned(coverageBadge as string));
+        const oldBadge = enpatterned(valueToChangeFinal);
+        const newBadge = enpatterned(coverageBadge as string);
+
+        if (getArgumentValue('ci') && oldBadge !== newBadge) {
+          reject("The coverage badge has changed, which isn't allowed with the `ci` argument");
+        }
+
+        newReadmeFile = newReadmeFile.replace(oldBadge, newBadge);
       });
 
       resolve(newReadmeFile);
