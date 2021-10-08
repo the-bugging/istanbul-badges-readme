@@ -47,15 +47,11 @@ describe('Tests editor', () => {
 
   it('should getNewReadme without coverageBadge', async () => {
     const brokenJsonCoveragePath = path.join(__dirname, '../tests/mocks/brokenCoverage.json');
-
     const brokenJsonCoverageFile = fs.readFileSync(brokenJsonCoveragePath, 'utf-8');
 
-    getNewReadme(
-      'fake readme data',
-      brokenJsonCoverageFile,
-    )([{ key: 'key', value: 'wronghash' }]).catch((error) => {
-      expect(error).toEqual('There has been an error getting new coverage badges');
-    });
+    return expect(
+      getNewReadme('fake readme data', brokenJsonCoverageFile)([{ key: 'key', value: 'wronghash' }]),
+    ).rejects.toMatch('There has been an error getting new coverage badges');
   });
 
   it('should break writeNewReadme with failure', () => {
@@ -75,5 +71,37 @@ describe('Tests editor', () => {
     const customBadgeLabel = getCoverageBadge(fakeJsonCoverageFile, 'bad');
 
     expect(customBadgeLabel).toEqual('https://img.shields.io/badge/customBadLabel-95.45%25-brightgreen.svg');
+  });
+
+  it('should have no errors using --ci when readme matches the coverage summary', () => {
+    const accurateCoveragePath = path.join(__dirname, '../tests/mocks/accurateCoverage.json');
+    const accurateCoverageFile = fs.readFileSync(accurateCoveragePath, 'utf-8');
+
+    const accurateReadmePath = path.join(__dirname, '../tests/mocks/accurateReadme.md');
+    const accurateReadmeFile = fs.readFileSync(accurateReadmePath, 'utf-8');
+
+    const readmeHashes = getReadmeHashes(accurateReadmeFile);
+
+    process.argv.push('--ci');
+
+    return expect(getNewReadme(accurateReadmeFile, accurateCoverageFile)(readmeHashes)).resolves.toBe(
+      accurateReadmeFile,
+    );
+  });
+
+  it('should throw error using --ci, when readme does not match coverage summary', () => {
+    const inaccurateCoveragePath = path.join(__dirname, '../tests/mocks/inaccurateCoverage.json');
+    const inaccurateCoverageFile = fs.readFileSync(inaccurateCoveragePath, 'utf-8');
+
+    const accurateReadmePath = path.join(__dirname, '../tests/mocks/accurateReadme.md');
+    const accurateReadmeFile = fs.readFileSync(accurateReadmePath, 'utf-8');
+
+    const readmeHashes = getReadmeHashes(accurateReadmeFile);
+
+    process.argv.push('--ci');
+
+    return expect(getNewReadme(accurateReadmeFile, inaccurateCoverageFile)(readmeHashes)).rejects.toMatch(
+      "The coverage badge has changed, which isn't allowed with the `ci` argument",
+    );
   });
 });
