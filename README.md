@@ -18,6 +18,7 @@
 - [Simple Usage](#simple-usage)
 - [Advanced Usage](#advanced-usage)
 - [Usage as a part of your githooks](#usage-as-a-part-of-your-githooks)
+- [Usage as a part of your CI](#usage-as-a-part-of-your-ci)
 - [See more examples](#see-more-examples)
 - [Contributors](#contributors)
 - [License](#license)
@@ -136,6 +137,25 @@
 3. Git Commit and Push. Just use your workflow as usual. If your tests fail, no commit. If they pass, update the README.md and add the file to the commit. Nice!
 
 ---
+
+## Usage as a part of your CI
+
+You may want to have peace of mind that contributors have run `istanbul-badges-readme` locally by performing a simple check in your CI.
+
+The `--ci` argument will throw an error if the badges generated do not match what is already in the `README.md`.
+
+You can add this to your **package.json** as follows:
+
+```json
+"scripts": {
+  "make-badges": "istanbul-badges-readme",
+  "make-badges:ci": "npm run make-badges -- --ci",
+}
+```
+
+Where the script `make-badges:ci` will run your existing `make-badges` script and just adds `--ci` as an argument.
+
+This is a useful addition/alternative to the githooks approach for some use cases such as larger codebases, slow computers etc, where it isn't always feasible to run all the tests and produce coverage on each commit.
 
 ## See more examples
 
