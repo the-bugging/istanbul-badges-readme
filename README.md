@@ -4,8 +4,8 @@
 
 > Creates README badges from istanbul coverage report
 
-| Statements                                                                    | Branches                                                                                       | Functions                                                                          | Lines                                                               |
-| ----------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| Statements                                                                      | Branches                                                                 | Functions                                                                | Lines                                                                 |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | --------------------------------------------------------------------- |
 | ![Statements](https://img.shields.io/badge/statements-92.27%25-brightgreen.svg) | ![Branches](https://img.shields.io/badge/branches-90%25-brightgreen.svg) | ![Functions](https://img.shields.io/badge/functions-83.33%25-yellow.svg) | ![Lines](https://img.shields.io/badge/lines-93.08%25-brightgreen.svg) |
 
 ---
@@ -156,6 +156,10 @@ You can add this to your **package.json** as follows:
 Where the script `make-badges:ci` will run your existing `make-badges` script by just adding `--ci` as an argument.
 
 This is a useful addition/alternative to the githooks approach for some use cases such as larger codebases, slow computers etc, where it isn't always feasible to run all the tests and produce coverage on each commit.
+
+> ✔️ **Tip**
+>
+> We use this in our pull request GitHub Action, check out a recent pull request to see it in action!
 
 ## See more examples
 
