@@ -4,9 +4,10 @@
   "description": "Creates README badges from istanbul coverage report",
   "scripts": {
     "test": "jest",
-    "cover": "npm run test -- --coverage",
-    "test:ci": "CI=TRUE npm run test",
-    "lint": "eslint 'src/**/*.{js,ts,tsx}' --quiet --fix",
+    "test:cover": "npm run test -- --coverage",
+    "test:ci": "CI=TRUE npm run cover",
+    "lint": "eslint src/**/*.{js,ts,tsx} --quiet",
+    "lint:fix": "npm run lint -- --fix",
     "build": "rm -rf lib/ && tsc",
     "start": "npm run build && node lib/index.js",
     "start:dev": "nodemon",
