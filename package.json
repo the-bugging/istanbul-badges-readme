@@ -5,7 +5,7 @@
   "scripts": {
     "test": "jest",
     "test:cover": "npm run test -- --coverage",
-    "test:ci": "CI=TRUE npm run cover",
+    "test:ci": "CI=TRUE npm run test:cover",
     "lint": "eslint src/**/*.{js,ts,tsx} --quiet",
     "lint:fix": "npm run lint -- --fix",
     "build": "rm -rf lib/ && tsc",
