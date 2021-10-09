@@ -11,7 +11,8 @@
     "start": "npm run build && node lib/index.js",
     "start:dev": "nodemon",
     "release": "standard-version",
-    "make-badges": "node lib/index.js -- --functionsLabel='Mis funciones!' --branchesLabel='Branches are troublesome!'",
+    "make-badges": "node lib/index.js",
+    "make-badges:ci": "npm run make-badges -- --ci",
     "prepublishOnly": "npm run build"
   },
   "main": "lib/index.js",
