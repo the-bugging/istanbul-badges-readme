@@ -190,6 +190,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/dutchenkoOleg"><img src="https://avatars.githubusercontent.com/u/16334642?v=4?s=70" width="70px;" alt=""/><br /><sub><b>Oleg Dutchenko</b></sub></a><br /><a href="https://github.com/olavoparno/istanbul-badges-readme/issues?q=author%3AdutchenkoOleg" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://creeation.de"><img src="https://avatars.githubusercontent.com/u/3277769?v=4?s=70" width="70px;" alt=""/><br /><sub><b>Thomas</b></sub></a><br /><a href="#ideas-CREEATION" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="https://github.com/troypoulter"><img src="https://avatars.githubusercontent.com/u/19419349?v=4?s=70" width="70px;" alt=""/><br /><sub><b>Troy Poulter</b></sub></a><br /><a href="https://github.com/olavoparno/istanbul-badges-readme/commits?author=troypoulter" title="Code">💻</a> <a href="#ideas-troypoulter" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/olavoparno/istanbul-badges-readme/commits?author=troypoulter" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/liaoliaots"><img src="https://avatars.githubusercontent.com/u/27341089?v=4?s=70" width="70px;" alt=""/><br /><sub><b>LiaoLiao</b></sub></a><br /><a href="#ideas-liaoliaots" title="Ideas, Planning, & Feedback">🤔</a></td>
   </tr>
 </table>
 
