@@ -51,9 +51,7 @@ export const getCoverageBadge = (coverageFile: string, hashKey: string): string 
 
     const badgeAlt = customLabel ? encodeURI(customLabel) : hashKey;
 
-    const badgeStyle = badgeStyles[customBadgeStyle.toString()]
-      ? badgeStyles[customBadgeStyle.toString()]
-      : badgeStyles.default;
+    const badgeStyle = badgeStyles[customBadgeStyle.toString()] ?? badgeStyles.default;
 
     return coverageUrlConst(badgeAlt, coverage, color, badgeStyle);
   } catch {
