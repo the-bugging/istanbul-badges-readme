@@ -8,3 +8,5 @@ export type TReport = {
 };
 
 export type TColors = 'red' | 'yellow' | 'brightgreen';
+
+export type TBadgeStyles = 'plastic' | 'flat' | 'flat-square' | 'for-the-badge';
