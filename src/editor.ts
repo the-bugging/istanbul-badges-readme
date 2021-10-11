@@ -1,6 +1,6 @@
 import fs from 'fs';
 import { getArgumentValue } from './arguments';
-import { readmePathConst, coveragePathConst, hashesConst, coverageUrlConst } from './constants';
+import { readmePathConst, coveragePathConst, hashesConst, coverageUrlConst, badgeStyles } from './constants';
 import { getCoveragePath, getReadmePath, readFileAsync } from './helpers';
 import { logger } from './logger';
 import { TColors, THashes, TReport } from './types';
@@ -47,9 +47,15 @@ export const getCoverageBadge = (coverageFile: string, hashKey: string): string 
     const coverage: number = parsedCoverage.total[hashKey].pct;
     const color = getCoverageColor(coverage);
     const customLabel = getArgumentValue(`${hashKey}Label`);
+    const customBadgeStyle = getArgumentValue('style');
+
     const badgeAlt = customLabel ? encodeURI(customLabel) : hashKey;
 
-    return coverageUrlConst(badgeAlt, coverage, color);
+    const [badgeStyle] = badgeStyles.includes(customBadgeStyle.toString())
+      ? badgeStyles.filter((badgeStyle) => badgeStyle === customBadgeStyle.toString())
+      : badgeStyles.filter((badgeStyle) => badgeStyle === 'flat');
+
+    return coverageUrlConst(badgeAlt, coverage, color, badgeStyle);
   } catch {
     return false;
   }

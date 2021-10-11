@@ -1,3 +1,9 @@
+/**
+ * Gets the node argument value or returns false
+ * @param argName the argument name without trailing hyphens i.e. --
+ * @example getArgumentValue('coverageDir')
+ * @returns string | false
+ */
 export const getArgumentValue = (argName: string): string | false => {
   const args = process.argv
     .filter((item) => {
@@ -9,5 +15,5 @@ export const getArgumentValue = (argName: string): string | false => {
     })
     .toString();
 
-  return args ? args.replace(`--${argName}=`, '') : false;
+  return args ? args.replace(`--${argName}=`, '').replace(/^"|"$/g, '') : false;
 };

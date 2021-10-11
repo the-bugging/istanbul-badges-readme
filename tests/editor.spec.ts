@@ -3,6 +3,9 @@ import path from 'path';
 import { getReadmeHashes, getCoverageColor, getCoverageBadge, getNewReadme, writeNewReadme } from '../src/editor';
 
 describe('Tests editor', () => {
+  afterEach(() => {
+    process.argv.pop();
+  });
   it('should getReadmeHashes from invalid readme', () => {
     const fakeReadmeFile = path.join(__dirname, '../tests/mocks/fakeReadmeFile.md');
 
@@ -39,7 +42,7 @@ describe('Tests editor', () => {
     const brokenJsonCoverageBadges = getCoverageBadge(brokenJsonCoverageFile, 'nonExistingHash');
     const wrongJsonCoverageBadges = getCoverageBadge('wrong json', 'nonExistingHash');
 
-    expect(existingCoverageBadge).toEqual('https://img.shields.io/badge/bad-95.45%25-brightgreen.svg');
+    expect(existingCoverageBadge).toEqual('https://img.shields.io/badge/bad-95.45%25-brightgreen.svg?style=flat');
     expect(nonExistingCoverageBadges).toBeFalsy();
     expect(brokenJsonCoverageBadges).toBeFalsy();
     expect(wrongJsonCoverageBadges).toBeFalsy();
@@ -49,9 +52,11 @@ describe('Tests editor', () => {
     const brokenJsonCoveragePath = path.join(__dirname, '../tests/mocks/brokenCoverage.json');
     const brokenJsonCoverageFile = fs.readFileSync(brokenJsonCoveragePath, 'utf-8');
 
-    return expect(
-      getNewReadme('fake readme data', brokenJsonCoverageFile)([{ key: 'key', value: 'wronghash' }]),
-    ).rejects.toMatch('There has been an error getting new coverage badges');
+    const makeGetNewReadme = getNewReadme('fake readme data', brokenJsonCoverageFile);
+
+    await makeGetNewReadme([{ key: 'key', value: 'wronghash' }]).catch((error) => {
+      expect(error).toEqual('There has been an error getting new coverage badges');
+    });
   });
 
   it('should break writeNewReadme with failure', () => {
@@ -70,10 +75,32 @@ describe('Tests editor', () => {
 
     const customBadgeLabel = getCoverageBadge(fakeJsonCoverageFile, 'bad');
 
-    expect(customBadgeLabel).toEqual('https://img.shields.io/badge/customBadLabel-95.45%25-brightgreen.svg');
+    expect(customBadgeLabel).toEqual('https://img.shields.io/badge/customBadLabel-95.45%25-brightgreen.svg?style=flat');
   });
 
-  it('should have no errors using --ci when readme matches the coverage summary', (done) => {
+  it('should accept custom style for the badges', () => {
+    const fakeJsonCoveragePath = path.join(__dirname, '../tests/mocks/fakeBadCoverage.json');
+    const fakeJsonCoverageFile = fs.readFileSync(fakeJsonCoveragePath, 'utf-8');
+
+    process.argv.push('--style="for-the-badge"');
+
+    const customBadgeLabel = getCoverageBadge(fakeJsonCoverageFile, 'bad');
+
+    expect(customBadgeLabel).toEqual('https://img.shields.io/badge/bad-95.45%25-brightgreen.svg?style=for-the-badge');
+  });
+
+  it('should accept custom style for the badges calling default fallback for non valid style', () => {
+    const fakeJsonCoveragePath = path.join(__dirname, '../tests/mocks/fakeBadCoverage.json');
+    const fakeJsonCoverageFile = fs.readFileSync(fakeJsonCoveragePath, 'utf-8');
+
+    process.argv.push('--style=non-valid-style');
+
+    const customBadgeLabel = getCoverageBadge(fakeJsonCoverageFile, 'bad');
+
+    expect(customBadgeLabel).toEqual('https://img.shields.io/badge/bad-95.45%25-brightgreen.svg?style=flat');
+  });
+
+  it('should have no errors using --ci when readme matches the coverage summary', async () => {
     const accurateCoveragePath = path.join(__dirname, '../tests/mocks/accurateCoverage.json');
     const accurateCoverageFile = fs.readFileSync(accurateCoveragePath, 'utf-8');
 
@@ -84,12 +111,14 @@ describe('Tests editor', () => {
 
     process.argv.push('--ci');
 
-    expect(getNewReadme(accurateReadmeFile, accurateCoverageFile)(readmeHashes)).resolves.toBe(accurateReadmeFile);
+    const makeGetNewReadme = getNewReadme(accurateReadmeFile, accurateCoverageFile);
 
-    done();
+    await makeGetNewReadme(readmeHashes).then((response) => {
+      expect(response).toEqual(accurateReadmeFile);
+    });
   });
 
-  it('should throw error using --ci, when readme does not match coverage summary', (done) => {
+  it('should throw error using --ci, when readme does not match coverage summary', async () => {
     const inaccurateCoveragePath = path.join(__dirname, '../tests/mocks/inaccurateCoverage.json');
     const inaccurateCoverageFile = fs.readFileSync(inaccurateCoveragePath, 'utf-8');
 
@@ -100,10 +129,10 @@ describe('Tests editor', () => {
 
     process.argv.push('--ci');
 
-    expect(getNewReadme(accurateReadmeFile, inaccurateCoverageFile)(readmeHashes)).rejects.toMatch(
-      "The coverage badge has changed, which isn't allowed with the `ci` argument",
-    );
+    const makeGetNewReadme = getNewReadme(accurateReadmeFile, inaccurateCoverageFile);
 
-    done();
+    await makeGetNewReadme(readmeHashes).catch((error) => {
+      expect(error).toEqual("The coverage badge has changed, which isn't allowed with the `ci` argument");
+    });
   });
 });
