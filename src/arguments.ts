@@ -15,5 +15,5 @@ export const getArgumentValue = (argName: string): string | false => {
     })
     .toString();
 
-  return args ? args.replace(`--${argName}=`, '').replace(/^"|"$/g, '') : false;
+  return args ? args.replace(`--${argName}=`, '').replace(/["']/g, '') : false;
 };
