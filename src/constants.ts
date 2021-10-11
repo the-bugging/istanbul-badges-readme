@@ -12,4 +12,10 @@ export const hashesConst = {
 };
 export const coverageUrlConst = (alt: string, coverage: number, color: string, badgeStyle: TBadgeStyles): string =>
   `https://img.shields.io/badge/${alt}-${coverage}${encodeURI('%')}-${color}.svg?style=${badgeStyle}`;
-export const badgeStyles: TBadgeStyles[] & string[] = ['for-the-badge', 'flat-square', 'flat', 'plastic'];
+export const badgeStyles: Record<string, TBadgeStyles> = {
+  'for-the-badge': 'for-the-badge',
+  'flat-square': 'flat-square',
+  flat: 'flat',
+  plastic: 'plastic',
+  default: 'flat',
+};
