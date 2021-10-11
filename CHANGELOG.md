@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/olavoparno/istanbul-badges-readme/compare/v1.5.0...v1.6.0) (2021-10-11)
+
+
+### Features
+
+* add style option for badges ([b5f6c4c](https://github.com/olavoparno/istanbul-badges-readme/commit/b5f6c4cb42f19168c47a65b68044dd49bdac9e98))
+
 ## [1.5.0](https://github.com/olavoparno/istanbul-badges-readme/compare/v1.4.0...v1.5.0) (2021-10-08)
 
 
