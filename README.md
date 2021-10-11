@@ -4,8 +4,8 @@
 
 > Creates README badges from istanbul coverage report
 
-| Statements                                                                         | Branches                                                                       | Functions                                                                        | Lines                                                                    |
-| ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| Statements                                                                               | Branches                                                                             | Functions                                                                              | Lines                                                                          |
+| ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
 | ![Statements](https://img.shields.io/badge/statements-100%25-brightgreen.svg?style=flat) | ![Branches](https://img.shields.io/badge/branches-100%25-brightgreen.svg?style=flat) | ![Functions](https://img.shields.io/badge/functions-100%25-brightgreen.svg?style=flat) | ![Lines](https://img.shields.io/badge/lines-100%25-brightgreen.svg?style=flat) |
 
 ---
@@ -181,6 +181,10 @@ This is a useful addition/alternative to the githooks approach for some use case
 ## See running examples
 
 [Examples folder](./examples/README.md)
+
+> ✔️ **Tip**
+>
+> We use this in our pull request GitHub Action, check out a recent pull request to see it in action!
 
 ---
 
