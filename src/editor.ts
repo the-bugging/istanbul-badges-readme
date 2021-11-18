@@ -48,12 +48,13 @@ export const getCoverageBadge = (coverageFile: string, hashKey: string): string 
     const color = getCoverageColor(coverage);
     const customLabel = getArgumentValue(`${hashKey}Label`);
     const customBadgeStyle = getArgumentValue('style');
+    const customBadgeLogo = getArgumentValue('logo');
 
     const badgeAlt = customLabel ? encodeURI(customLabel) : hashKey;
 
     const badgeStyle = badgeStyles[customBadgeStyle.toString()] ?? badgeStyles.default;
 
-    return coverageUrlConst(badgeAlt, coverage, color, badgeStyle);
+    return coverageUrlConst(badgeAlt, coverage, color, badgeStyle, customBadgeLogo);
   } catch {
     return false;
   }

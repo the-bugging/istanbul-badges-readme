@@ -31,7 +31,7 @@ export const doesCoverageHashesExist = (coveragePath: string): Promise<boolean |
     const coverageFile = fs.readFileSync(getCoveragePath(coveragePath));
 
     hashesConst.coverage.forEach((hash) => {
-      if (coverageFile.includes(hash.key)) return resolve(true);
+      if (coverageFile.includes(hash.key)) resolve(true);
     });
 
     return reject('Coverage file does contain the needed hashes');
@@ -43,7 +43,7 @@ export const doesReadmeHashExist = (readmePath: string): Promise<boolean | strin
     const readmeFile = fs.readFileSync(getReadmePath(readmePath));
 
     hashesConst.coverage.forEach((hash) => {
-      if (readmeFile.includes(`![${hash.value}]`)) return resolve(true);
+      if (readmeFile.includes(`![${hash.value}]`)) resolve(true);
     });
 
     return reject('Readme does not contain the needed hashes');

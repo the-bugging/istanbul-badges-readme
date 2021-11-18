@@ -12,7 +12,7 @@
     "start": "npm run build && node lib/index.js",
     "start:dev": "nodemon",
     "release": "standard-version",
-    "make-badges": "node lib/index.js",
+    "make-badges": "node lib/index.js -- --logo=jest",
     "make-badges:ci": "npm run make-badges -- --ci",
     "prepublishOnly": "npm run build"
   },

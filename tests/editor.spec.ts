@@ -34,8 +34,8 @@ describe('Tests editor', () => {
     const fakeJsonCoveragePath = path.join(__dirname, '../tests/mocks/fakeBadCoverage.json');
     const brokenJsonCoveragePath = path.join(__dirname, '../tests/mocks/brokenCoverage.json');
 
-    const fakeJsonCoverageFile = fs.readFileSync(fakeJsonCoveragePath, 'utf-8');
-    const brokenJsonCoverageFile = fs.readFileSync(brokenJsonCoveragePath, 'utf-8');
+    const fakeJsonCoverageFile = fs.readFileSync(fakeJsonCoveragePath, 'utf8');
+    const brokenJsonCoverageFile = fs.readFileSync(brokenJsonCoveragePath, 'utf8');
 
     const existingCoverageBadge = getCoverageBadge(fakeJsonCoverageFile, 'bad');
     const nonExistingCoverageBadges = getCoverageBadge(fakeJsonCoverageFile, 'nonExistingHash');
@@ -50,7 +50,7 @@ describe('Tests editor', () => {
 
   it('should getNewReadme without coverageBadge', async () => {
     const brokenJsonCoveragePath = path.join(__dirname, '../tests/mocks/brokenCoverage.json');
-    const brokenJsonCoverageFile = fs.readFileSync(brokenJsonCoveragePath, 'utf-8');
+    const brokenJsonCoverageFile = fs.readFileSync(brokenJsonCoveragePath, 'utf8');
 
     const makeGetNewReadme = getNewReadme('fake readme data', brokenJsonCoverageFile);
 
@@ -69,7 +69,7 @@ describe('Tests editor', () => {
 
   it('should accept custom label for hashKey', () => {
     const fakeJsonCoveragePath = path.join(__dirname, '../tests/mocks/fakeBadCoverage.json');
-    const fakeJsonCoverageFile = fs.readFileSync(fakeJsonCoveragePath, 'utf-8');
+    const fakeJsonCoverageFile = fs.readFileSync(fakeJsonCoveragePath, 'utf8');
 
     process.argv.push('--badLabel=customBadLabel');
 
@@ -80,7 +80,7 @@ describe('Tests editor', () => {
 
   it('should accept custom style for the badges', () => {
     const fakeJsonCoveragePath = path.join(__dirname, '../tests/mocks/fakeBadCoverage.json');
-    const fakeJsonCoverageFile = fs.readFileSync(fakeJsonCoveragePath, 'utf-8');
+    const fakeJsonCoverageFile = fs.readFileSync(fakeJsonCoveragePath, 'utf8');
 
     process.argv.push('--style="for-the-badge"');
 
@@ -91,7 +91,7 @@ describe('Tests editor', () => {
 
   it('should accept custom style for the badges calling default fallback for non valid style', () => {
     const fakeJsonCoveragePath = path.join(__dirname, '../tests/mocks/fakeBadCoverage.json');
-    const fakeJsonCoverageFile = fs.readFileSync(fakeJsonCoveragePath, 'utf-8');
+    const fakeJsonCoverageFile = fs.readFileSync(fakeJsonCoveragePath, 'utf8');
 
     process.argv.push('--style=non-valid-style');
 
@@ -100,12 +100,23 @@ describe('Tests editor', () => {
     expect(customBadgeLabel).toEqual('https://img.shields.io/badge/bad-95.45%25-brightgreen.svg?style=flat');
   });
 
+  it('should accept custom logo for the badges', () => {
+    const fakeJsonCoveragePath = path.join(__dirname, '../tests/mocks/fakeBadCoverage.json');
+    const fakeJsonCoverageFile = fs.readFileSync(fakeJsonCoveragePath, 'utf8');
+
+    process.argv.push('--logo=jest');
+
+    const customBadgeLabel = getCoverageBadge(fakeJsonCoverageFile, 'bad');
+
+    expect(customBadgeLabel).toEqual('https://img.shields.io/badge/bad-95.45%25-brightgreen.svg?style=flat&logo=jest');
+  });
+
   it('should have no errors using --ci when readme matches the coverage summary', async () => {
     const accurateCoveragePath = path.join(__dirname, '../tests/mocks/accurateCoverage.json');
-    const accurateCoverageFile = fs.readFileSync(accurateCoveragePath, 'utf-8');
+    const accurateCoverageFile = fs.readFileSync(accurateCoveragePath, 'utf8');
 
     const accurateReadmePath = path.join(__dirname, '../tests/mocks/accurateReadme.md');
-    const accurateReadmeFile = fs.readFileSync(accurateReadmePath, 'utf-8');
+    const accurateReadmeFile = fs.readFileSync(accurateReadmePath, 'utf8');
 
     const readmeHashes = getReadmeHashes(accurateReadmeFile);
 
@@ -113,17 +124,19 @@ describe('Tests editor', () => {
 
     const makeGetNewReadme = getNewReadme(accurateReadmeFile, accurateCoverageFile);
 
-    await makeGetNewReadme(readmeHashes).then((response) => {
-      expect(response).toEqual(accurateReadmeFile);
-    });
+    await makeGetNewReadme(readmeHashes)
+      .then((response) => {
+        expect(response).toEqual(accurateReadmeFile);
+      })
+      .catch((error) => expect(error).toBeTruthy());
   });
 
   it('should throw error using --ci, when readme does not match coverage summary', async () => {
     const inaccurateCoveragePath = path.join(__dirname, '../tests/mocks/inaccurateCoverage.json');
-    const inaccurateCoverageFile = fs.readFileSync(inaccurateCoveragePath, 'utf-8');
+    const inaccurateCoverageFile = fs.readFileSync(inaccurateCoveragePath, 'utf8');
 
     const accurateReadmePath = path.join(__dirname, '../tests/mocks/accurateReadme.md');
-    const accurateReadmeFile = fs.readFileSync(accurateReadmePath, 'utf-8');
+    const accurateReadmeFile = fs.readFileSync(accurateReadmePath, 'utf8');
 
     const readmeHashes = getReadmeHashes(accurateReadmeFile);
 

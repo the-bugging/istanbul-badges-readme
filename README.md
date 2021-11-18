@@ -119,6 +119,12 @@
   npm run istanbul-badges-readme --style="for-the-badges"
 ```
 
+- There is an option to use a _logo_ within the badge, as described on _[shields.io's](https://shields.io/)_ own documentation which uses all icons available at _[simple-icons](https://simpleicons.org/)_.
+
+```bash
+  npm run istanbul-badges-readme --logo="jest"
+```
+
 ---
 
 ## Usage as a part of your githooks
