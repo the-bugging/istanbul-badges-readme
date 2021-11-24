@@ -12,7 +12,7 @@ describe('Tests validate file', () => {
   });
 
   it('should throw when doesReadmeFileExist does not find file', async () => {
-    doesReadmeFileExist('fake-path').catch((error) => {
+    await doesReadmeFileExist('fake-path').catch((error) => {
       expect(error).toEqual('Readme file does not exist');
     });
   });
@@ -20,7 +20,7 @@ describe('Tests validate file', () => {
   it('should throw when doesCoverageFileExist does not find file', async () => {
     const fakePath = 'fake-path';
 
-    doesCoverageFileExist('fake-path').catch((error) => {
+    await doesCoverageFileExist('fake-path').catch((error) => {
       expect(error).toEqual(`Coverage file does not exist in ${fakePath}`);
     });
   });
@@ -28,7 +28,7 @@ describe('Tests validate file', () => {
   it("should throw when doesCoverageHashesExist can't find a hash", async () => {
     const fakeJsonPath = path.join(__dirname, '../tests/mocks/fakeBadCoverage.json');
 
-    doesCoverageHashesExist(fakeJsonPath).catch((error) => {
+    await doesCoverageHashesExist(fakeJsonPath).catch((error) => {
       expect(error).toEqual('Coverage file does contain the needed hashes');
     });
   });
@@ -36,7 +36,7 @@ describe('Tests validate file', () => {
   it("should throw when doesReadmeHashExist can't find a hash", async () => {
     const fakeReadmeFile = path.join(__dirname, '../tests/mocks/fakeReadmeFile.md');
 
-    doesReadmeHashExist(fakeReadmeFile).catch((error) => {
+    await doesReadmeHashExist(fakeReadmeFile).catch((error) => {
       expect(error).toEqual('Readme does not contain the needed hashes');
     });
   });
