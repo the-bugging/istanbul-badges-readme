@@ -1,17 +1,29 @@
 import fs from 'fs';
 import { hashesConst, readmePathConst, coveragePathConst } from './constants';
-import { getCoveragePath, getReadmePath } from './helpers';
+import { getCoveragePath, getReadmePath, isNodeErrnoError } from './helpers';
 import { logger } from './logger';
 
 const { logInfo } = logger();
 
-export const doesReadmeFileExist = (readmePath: string): Promise<boolean | string> => {
+export const doesReadmeFileExistWithRightPermissions = (readmePath: string): Promise<boolean | string> => {
   return new Promise((resolve, reject) => {
-    const doesItExist = fs.existsSync(getReadmePath(readmePath));
+    try {
+      // NOTE: Doing this check for the accessibility before reading/writing it
+      //       is not recommended as it introduces racing conditions since other
+      //       processes may change the file's state between the two call.
+      //       But for simplicity and considering the context of this library,
+      //       this wrong access file handling is toleralable.
+      fs.accessSync(getReadmePath(readmePath), fs.constants.R_OK | fs.constants.W_OK);
+      return resolve(true);
+    } catch (err) {
+      if (isNodeErrnoError(err)) {
+        if (err.code === 'ENOENT') return reject('Readme file does not exist');
+        if (err.code === 'EACCES') return reject('Readme file does not have read and write permissions');
+        return reject(err.message);
+      }
 
-    if (doesItExist) return resolve(true);
-
-    return reject('Readme file does not exist');
+      return reject((err as Error).message || 'Something went wrong');
+    }
   });
 };
 
@@ -53,7 +65,7 @@ export const doesReadmeHashExist = (readmePath: string): Promise<boolean | strin
 export const checkConfig = (): Promise<void> => {
   logInfo('Info: 1. Config check process started');
 
-  return doesReadmeFileExist(readmePathConst)
+  return doesReadmeFileExistWithRightPermissions(readmePathConst)
     .then(() => {
       logInfo('- Readme file exists... ✔️.');
     })

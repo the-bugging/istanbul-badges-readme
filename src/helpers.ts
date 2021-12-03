@@ -31,3 +31,11 @@ export const readFileAsync = async (path: string, encode: BufferEncoding): Promi
     });
   });
 };
+
+/**
+ * Asserts that the given `error` was created by Node internals.
+ * @param error The error object.
+ * @returns `true` if given error object is a NodeJS error.
+ */
+export const isNodeErrnoError = (error: unknown): error is NodeJS.ErrnoException =>
+  error instanceof Error && 'code' in error;
