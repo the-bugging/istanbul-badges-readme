@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { getArgumentValue } from './arguments';
 import { hashesConst, readmePathConst, coveragePathConst } from './constants';
 import { getCoveragePath, getReadmePath, isNodeErrnoError } from './helpers';
 import { logger } from './logger';
@@ -62,6 +63,12 @@ export const doesReadmeHashExist = (readmePath: string): Promise<boolean | strin
   });
 };
 
+export const getExitCodeOnValidationError = (): number => {
+  const exitCodeArg = getArgumentValue('exitCode');
+  const enableExitCode = exitCodeArg === '' || exitCodeArg === 'true';
+  return enableExitCode ? 1 : 0;
+};
+
 export const checkConfig = (): Promise<void> => {
   logInfo('Info: 1. Config check process started');
 
@@ -81,5 +88,11 @@ export const checkConfig = (): Promise<void> => {
     .then(() => {
       logInfo('- Readme hashes exist... ✔️.');
     })
-    .then(() => logInfo('Info: 1. Config check process ended'));
+    .then(() => logInfo('Info: 1. Config check process ended'))
+    .catch((err) => {
+      process.exitCode = getExitCodeOnValidationError();
+      // Re-throwing the error since we catch it in this scope just to defined
+      // the right process exit code:
+      throw err;
+    });
 };
