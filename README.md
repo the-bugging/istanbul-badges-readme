@@ -226,6 +226,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/liaoliaots"><img src="https://avatars.githubusercontent.com/u/27341089?v=4?s=70" width="70px;" alt=""/><br /><sub><b>LiaoLiao</b></sub></a><br /><a href="#ideas-liaoliaots" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="https://github.com/David-Mimnagh"><img src="https://avatars.githubusercontent.com/u/10092258?v=4?s=70" width="70px;" alt=""/><br /><sub><b>David Mimnagh</b></sub></a><br /><a href="#ideas-David-Mimnagh" title="Ideas, Planning, & Feedback">🤔</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="http://micalevisk.github.io"><img src="https://avatars.githubusercontent.com/u/13461315?v=4?s=70" width="70px;" alt=""/><br /><sub><b>Micael Levi L. Cavalcante</b></sub></a><br /><a href="#ideas-micalevisk" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/olavoparno/istanbul-badges-readme/commits?author=micalevisk" title="Code">💻</a> <a href="https://github.com/olavoparno/istanbul-badges-readme/issues?q=author%3Amicalevisk" title="Bug reports">🐛</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-restore -->
