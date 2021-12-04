@@ -5,6 +5,7 @@ import {
   doesCoverageFileExist,
   doesCoverageHashesExist,
   doesReadmeHashExist,
+  getExitCodeOnValidationError,
 } from '../src/validate';
 
 describe('Tests validate file', () => {
@@ -102,6 +103,23 @@ describe('Tests validate file', () => {
 
     await doesReadmeHashExist(fakeReadmeFile).catch((error) => {
       expect(error).toEqual('Readme does not contain the needed hashes');
+    });
+  });
+
+  test.each([
+    [0, ' is not supplied', undefined],
+    [1, ' is supplied', ''],
+    [0, '=false', 'false'],
+    [1, '=true', 'true'],
+  ])('getExitCodeOnValidationError should return %d when --exitCode%s', (expectedExitCode, _, exitCodeArgValue) => {
+    if (exitCodeArgValue !== undefined) {
+      process.argv.push(`--exitCode=${exitCodeArgValue}`);
+    }
+
+    expect(getExitCodeOnValidationError()).toBe(expectedExitCode);
+
+    afterEach(() => {
+      process.argv.pop();
     });
   });
 });
