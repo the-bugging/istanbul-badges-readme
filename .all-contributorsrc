@@ -144,6 +144,17 @@
       "contributions": [
         "ideas"
       ]
+    },
+    {
+      "login": "micalevisk",
+      "name": "Micael Levi L. Cavalcante",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13461315?v=4",
+      "profile": "http://micalevisk.github.io",
+      "contributions": [
+        "ideas",
+        "code",
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
