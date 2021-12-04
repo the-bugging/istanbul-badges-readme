@@ -63,7 +63,7 @@ export const doesReadmeHashExist = (readmePath: string): Promise<boolean | strin
 };
 
 export const checkConfig = (): Promise<void> => {
-  logInfo('Info: 1. Config check process started');
+  logInfo('Config check process started');
 
   return doesReadmeFileExistWithRightPermissions(readmePathConst)
     .then(() => {
@@ -81,5 +81,5 @@ export const checkConfig = (): Promise<void> => {
     .then(() => {
       logInfo('- Readme hashes exist... ✔️.');
     })
-    .then(() => logInfo('Info: 1. Config check process ended'));
+    .then(() => logInfo('Config check process ended'));
 };

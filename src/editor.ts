@@ -110,7 +110,7 @@ export const writeNewReadme =
   };
 
 export const editReadme = async (): Promise<void> => {
-  logInfo('Info: 2. Editor process started');
+  logInfo('Editor process started');
 
   const readmeFile = await readFileAsync(getReadmePath(readmePathConst), 'utf-8');
   const coverageFile = await readFileAsync(getCoveragePath(coveragePathConst), 'utf8');
@@ -118,5 +118,5 @@ export const editReadme = async (): Promise<void> => {
   return Promise.resolve(getReadmeHashes(readmeFile))
     .then(getNewReadme(readmeFile, coverageFile))
     .then(writeNewReadme(getReadmePath(readmePathConst)))
-    .then(() => logInfo('Info: 2. Editor process ended'));
+    .then(() => logInfo('Editor process ended'));
 };
