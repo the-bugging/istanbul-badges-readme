@@ -19,10 +19,7 @@ describe('Tests validate file', () => {
       throw error;
     });
 
-    await expect(
-      //
-      doesReadmeFileExistWithRightPermissions('fake-path'),
-    ).rejects.toEqual('Readme file does not exist');
+    await expect(doesReadmeFileExistWithRightPermissions('fake-path')).rejects.toEqual('Readme file does not exist');
 
     expect(fsSpy).toHaveBeenNthCalledWith(1, 'fake-path', fs.constants.R_OK | fs.constants.W_OK);
   });
@@ -34,10 +31,9 @@ describe('Tests validate file', () => {
       throw error;
     });
 
-    await expect(
-      //
-      doesReadmeFileExistWithRightPermissions('fake-path'),
-    ).rejects.toEqual('Readme file does not have read and write permissions');
+    await expect(doesReadmeFileExistWithRightPermissions('fake-path')).rejects.toEqual(
+      'Readme file does not have read and write permissions',
+    );
 
     expect(fsMock).toHaveBeenNthCalledWith(1, 'fake-path', fs.constants.R_OK | fs.constants.W_OK);
   });
@@ -49,10 +45,7 @@ describe('Tests validate file', () => {
       throw error;
     });
 
-    await expect(
-      //
-      doesReadmeFileExistWithRightPermissions('fake-path'),
-    ).rejects.toEqual('something');
+    await expect(doesReadmeFileExistWithRightPermissions('fake-path')).rejects.toEqual('something');
 
     expect(fsSpy).toHaveBeenNthCalledWith(1, 'fake-path', fs.constants.R_OK | fs.constants.W_OK);
   });
@@ -64,19 +57,13 @@ describe('Tests validate file', () => {
       throw new Error('something');
     });
 
-    await expect(
-      //
-      doesReadmeFileExistWithRightPermissions('fake-path'),
-    ).rejects.toEqual('something');
+    await expect(doesReadmeFileExistWithRightPermissions('fake-path')).rejects.toEqual('something');
 
     fsSpy.mockImplementation(() => {
       throw new Error();
     });
 
-    await expect(
-      //
-      doesReadmeFileExistWithRightPermissions('fake-path'),
-    ).rejects.toEqual('Something went wrong');
+    await expect(doesReadmeFileExistWithRightPermissions('fake-path')).rejects.toEqual('Something went wrong');
 
     expect(fsSpy).toHaveBeenNthCalledWith(2, 'fake-path', fs.constants.R_OK | fs.constants.W_OK);
   });

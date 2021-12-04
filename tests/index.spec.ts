@@ -6,15 +6,14 @@ describe('Tests istanbul badges readme', () => {
     jest.clearAllMocks();
   });
 
+  const consoleInfoFn = jest.fn();
+  const consoleErrorFn = jest.fn();
+
   it('should run mocked badger correctly from start to finish', async () => {
-    console.info = jest.fn();
-
-    const consoleSpy = jest.spyOn(console, 'info');
-
     const checkConfig = () => Promise.resolve();
     const editReadme = () => Promise.resolve();
     const logger = () => ({
-      logInfo: (info: string) => console.info(info),
+      logInfo: consoleInfoFn,
       logError: () => null,
       logWarn: () => null,
     });
@@ -23,23 +22,17 @@ describe('Tests istanbul badges readme', () => {
 
     await mockedBadger();
 
-    expect(consoleSpy).toHaveBeenCalledTimes(2);
-    expect(consoleSpy).toHaveBeenNthCalledWith(1, 'Info: 0. Istanbul Badges Readme process started');
-    expect(consoleSpy).toHaveBeenNthCalledWith(2, 'Info: 0. Istanbul Badges Readme process finished');
+    expect(consoleInfoFn).toHaveBeenCalledTimes(2);
+    expect(consoleInfoFn).toHaveBeenNthCalledWith(1, 'Istanbul Badges Readme process started');
+    expect(consoleInfoFn).toHaveBeenNthCalledWith(2, 'Istanbul Badges Readme process finished');
   });
 
   it('should run mocked badger with error on checking config', async () => {
-    console.info = jest.fn();
-    console.error = jest.fn();
-
-    const consoleSpyInfo = jest.spyOn(console, 'info');
-    const consoleSpyError = jest.spyOn(console, 'error');
-
     const checkConfig = () => Promise.reject('Errored!');
     const editReadme = () => Promise.resolve();
     const logger = () => ({
-      logInfo: (info: string) => console.info(info),
-      logError: (error: string) => console.error(error),
+      logInfo: consoleInfoFn,
+      logError: consoleErrorFn,
       logWarn: () => null,
     });
 
@@ -47,28 +40,61 @@ describe('Tests istanbul badges readme', () => {
 
     await mockedBadger();
 
-    expect(consoleSpyInfo).toHaveBeenCalledTimes(2);
-    expect(consoleSpyInfo).toHaveBeenNthCalledWith(1, 'Info: 0. Istanbul Badges Readme process started');
-    expect(consoleSpyInfo).toHaveBeenNthCalledWith(2, 'Info: 0. Istanbul Badges Readme process finished');
+    expect(consoleInfoFn).toHaveBeenCalledTimes(2);
+    expect(consoleInfoFn).toHaveBeenNthCalledWith(1, 'Istanbul Badges Readme process started');
+    expect(consoleInfoFn).toHaveBeenNthCalledWith(2, 'Istanbul Badges Readme process finished');
 
-    expect(consoleSpyError).toHaveBeenCalledTimes(3);
-    expect(consoleSpyError).toHaveBeenNthCalledWith(1, 'Error: Errored!');
-    expect(consoleSpyError).toHaveBeenNthCalledWith(2, 'Error: Please refer to the documentation');
-    expect(consoleSpyError).toHaveBeenNthCalledWith(
+    expect(consoleErrorFn).toHaveBeenCalledTimes(3);
+    expect(consoleErrorFn).toHaveBeenNthCalledWith(1, 'Errored!');
+    expect(consoleErrorFn).toHaveBeenNthCalledWith(2, 'Please refer to the documentation');
+    expect(consoleErrorFn).toHaveBeenNthCalledWith(
       3,
-      'Error: https://github.com/olavoparno/istanbul-badges-readme/blob/master/README.md',
+      'https://github.com/olavoparno/istanbul-badges-readme/blob/master/README.md',
     );
   });
 
   it('should run badger correctly from start to finish', async () => {
-    console.info = jest.fn();
-
-    const consoleSpy = jest.spyOn(console, 'info');
+    console.info = consoleInfoFn;
 
     await badger();
 
-    expect(consoleSpy).toHaveBeenCalledTimes(2);
-    expect(consoleSpy).toHaveBeenNthCalledWith(1, 'Info: 0. Istanbul Badges Readme process started');
-    expect(consoleSpy).toHaveBeenNthCalledWith(2, 'Info: 0. Istanbul Badges Readme process finished');
+    expect(consoleInfoFn).toHaveBeenCalledTimes(2);
+    expect(consoleInfoFn).toHaveBeenNthCalledWith(1, 'Istanbul Badges Readme process started');
+    expect(consoleInfoFn).toHaveBeenNthCalledWith(2, 'Istanbul Badges Readme process finished');
+  });
+
+  it('should run badger with optional exitCode on error', async () => {
+    process.argv.push('--coverageDir="fake-non-exitent-path"');
+
+    const processExitSpy = jest.spyOn(process, 'exit').mockImplementation(() => null as unknown as never);
+
+    const checkConfig = () => Promise.reject('Errored!');
+    const editReadme = () => Promise.resolve();
+    const logger = () => ({
+      logInfo: consoleInfoFn,
+      logError: consoleErrorFn,
+      logWarn: () => null,
+    });
+    const getExitCodeOnError = () => 1;
+
+    const mockedBadger = badgerFactory({ checkConfig, editReadme, logger, getExitCodeOnError });
+
+    await mockedBadger()
+      .catch(() => {
+        expect(consoleErrorFn).toHaveBeenCalledTimes(3);
+        expect(consoleErrorFn).toHaveBeenNthCalledWith(
+          1,
+          'File not found at: fake-non-exitent-path/coverage-summary.json',
+        );
+        expect(consoleErrorFn).toHaveBeenNthCalledWith(2, 'Please refer to the documentation');
+        expect(consoleErrorFn).toHaveBeenNthCalledWith(
+          3,
+          'https://github.com/olavoparno/istanbul-badges-readme/blob/master/README.md',
+        );
+      })
+      .finally(() => {
+        expect(consoleInfoFn).toHaveBeenCalledWith('Istanbul Badges Readme process finished');
+        expect(processExitSpy).toHaveBeenCalledWith(1);
+      });
   });
 });

@@ -4,9 +4,9 @@
 
 > Creates README badges from istanbul coverage report
 
-| Statements                                                                               | Branches                                                                             | Functions                                                                              | Lines                                                                          |
-| ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| ![Statements](https://img.shields.io/badge/statements-100%25-brightgreen.svg?style=flat&logo=jest) | ![Branches](https://img.shields.io/badge/branches-100%25-brightgreen.svg?style=flat&logo=jest) | ![Functions](https://img.shields.io/badge/functions-100%25-brightgreen.svg?style=flat&logo=jest) | ![Lines](https://img.shields.io/badge/lines-100%25-brightgreen.svg?style=flat&logo=jest) |
+| Statements                                                                                 | Branches                                                                               | Functions                                                                           | Lines                                                                            |
+| ------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| ![Statements](https://img.shields.io/badge/statements-90.59%25-brightgreen.svg?style=flat) | ![Branches](https://img.shields.io/badge/branches-56.25%25-red.svg?style=flat) | ![Functions](https://img.shields.io/badge/functions-98%25-brightgreen.svg?style=flat) | ![Lines](https://img.shields.io/badge/lines-90.96%25-brightgreen.svg?style=flat) |
 
 ---
 
@@ -123,6 +123,12 @@
 
 ```bash
   npm run istanbul-badges-readme --logo="jest"
+```
+
+- To exit with **1** code on validation errors (eg.: _README doesn't exist_, or _coverage directory doesn't exist_) or on editing errors (eg.: cannot write to README due to lack of permissions). The default exit code is **0**. Set a different one by using **--exitCode** argument.
+
+```bash
+  npm run istanbul-badges-readme --exitCode=1
 ```
 
 ---

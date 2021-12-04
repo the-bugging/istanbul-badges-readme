@@ -6,23 +6,29 @@ type TBadgerFactory = {
     logWarn: (message: string) => void;
     logError: (message: string) => void;
   };
+  getExitCodeOnError?: () => number | undefined;
 };
 
 export const badgerFactory =
-  ({ checkConfig, editReadme, logger }: TBadgerFactory) =>
+  ({ checkConfig, editReadme, logger, getExitCodeOnError }: TBadgerFactory) =>
   (): Promise<void> => {
     const { logInfo, logError } = logger();
 
-    logInfo('Info: 0. Istanbul Badges Readme process started');
+    logInfo('Istanbul Badges Readme process started');
 
     return checkConfig()
       .then(() => editReadme())
       .catch((error) => {
-        logError(`Error: ${error}`);
-        logError('Error: Please refer to the documentation');
-        logError('Error: https://github.com/olavoparno/istanbul-badges-readme/blob/master/README.md');
+        logError(`${error}`);
+        logError('Please refer to the documentation');
+        logError('https://github.com/olavoparno/istanbul-badges-readme/blob/master/README.md');
       })
       .finally(() => {
-        logInfo('Info: 0. Istanbul Badges Readme process finished');
+        const exitCode = getExitCodeOnError?.();
+        logInfo('Istanbul Badges Readme process finished');
+
+        if (exitCode) {
+          process.exit(exitCode);
+        }
       });
   };
