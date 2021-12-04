@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.0](https://github.com/olavoparno/istanbul-badges-readme/compare/v1.7.0...v1.8.0) (2021-12-04)
+
+
+### Features
+
+* add option to allow exitCode 1 ([3f37f61](https://github.com/olavoparno/istanbul-badges-readme/commit/3f37f6107a5f78340b929e62065cab73138f87b6))
+
+
+### Bug Fixes
+
+* check for read & write permissions on README file ([65809cc](https://github.com/olavoparno/istanbul-badges-readme/commit/65809ccd72b6d2fc93a3649683bbe66f4a6ceeaa))
+
 ## [1.7.0](https://github.com/olavoparno/istanbul-badges-readme/compare/v1.6.0...v1.7.0) (2021-11-18)
 
 

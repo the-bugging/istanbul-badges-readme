@@ -1,6 +1,6 @@
 {
   "name": "istanbul-badges-readme",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "Creates README badges from istanbul coverage report",
   "scripts": {
     "test": "jest",
