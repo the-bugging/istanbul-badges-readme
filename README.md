@@ -125,6 +125,12 @@
   npm run istanbul-badges-readme --logo="jest"
 ```
 
+- To exit with **1** code on validation errors (eg: _README doesn't exists_, or _coverage directory doesn't exists_) or on editing errors (eg: cannot write the README due to lack of permissions). The default exit code is **0**.
+
+```bash
+  npm run istanbul-badges-readme --exitCode
+```
+
 ---
 
 ## Usage as a part of your githooks
