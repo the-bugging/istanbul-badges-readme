@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.8.1](https://github.com/olavoparno/istanbul-badges-readme/compare/v1.8.0...v1.8.1) (2021-12-07)
+
+
+### Bug Fixes
+
+* set exit code only on validation errors ([c3b46cc](https://github.com/olavoparno/istanbul-badges-readme/commit/c3b46cc23ee0c7fd71454270cb6ed362317f2aa8))
+
 ## [1.8.0](https://github.com/olavoparno/istanbul-badges-readme/compare/v1.7.0...v1.8.0) (2021-12-04)
 
 
