@@ -22,13 +22,10 @@ export const badgerFactory =
         logError(`${error}`);
         logError('Please refer to the documentation');
         logError('https://github.com/olavoparno/istanbul-badges-readme/blob/master/README.md');
+
+        process.exitCode = getExitCodeOnError?.() ?? 0;
       })
       .finally(() => {
-        const exitCode = getExitCodeOnError?.();
         logInfo('Istanbul Badges Readme process finished');
-
-        if (exitCode) {
-          process.exit(exitCode);
-        }
       });
   };
