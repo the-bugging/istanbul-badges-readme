@@ -155,6 +155,15 @@
         "code",
         "bug"
       ]
+    },
+    {
+      "login": "myknbani",
+      "name": "Richard Michael Coo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5841268?v=4",
+      "profile": "https://github.com/myknbani",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,

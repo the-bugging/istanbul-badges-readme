@@ -228,6 +228,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="http://micalevisk.github.io"><img src="https://avatars.githubusercontent.com/u/13461315?v=4?s=70" width="70px;" alt=""/><br /><sub><b>Micael Levi L. Cavalcante</b></sub></a><br /><a href="#ideas-micalevisk" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/olavoparno/istanbul-badges-readme/commits?author=micalevisk" title="Code">💻</a> <a href="https://github.com/olavoparno/istanbul-badges-readme/issues?q=author%3Amicalevisk" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/myknbani"><img src="https://avatars.githubusercontent.com/u/5841268?v=4?s=70" width="70px;" alt=""/><br /><sub><b>Richard Michael Coo</b></sub></a><br /><a href="https://github.com/olavoparno/istanbul-badges-readme/issues?q=author%3Amyknbani" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
