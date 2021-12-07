@@ -91,10 +91,10 @@ describe('Tests istanbul badges readme', () => {
           3,
           'https://github.com/olavoparno/istanbul-badges-readme/blob/master/README.md',
         );
+        expect(processExitSpy).toHaveBeenCalledWith(1);
       })
       .finally(() => {
         expect(consoleInfoFn).toHaveBeenCalledWith('Istanbul Badges Readme process finished');
-        expect(processExitSpy).toHaveBeenCalledWith(1);
       });
   });
 });
