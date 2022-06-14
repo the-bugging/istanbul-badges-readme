@@ -164,6 +164,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "leticiavna",
+      "name": "Letícia Vidal",
+      "avatar_url": "https://avatars.githubusercontent.com/u/28829955?v=4",
+      "profile": "https://www.linkedin.com/in/leticiavna/",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
