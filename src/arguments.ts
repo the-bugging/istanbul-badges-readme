@@ -6,13 +6,7 @@
  */
 export const getArgumentValue = (argName: string): string | false => {
   const args = process.argv
-    .filter((item) => {
-      if (item.indexOf(argName) >= 0) {
-        return item;
-      }
-
-      return '';
-    })
+    .filter((item) => (item.startsWith('--') && item.indexOf(argName) >= 0 ? item : ''))
     .toString();
 
   return args ? args.replace(`--${argName}=`, '').replace(/["']/g, '') : false;
