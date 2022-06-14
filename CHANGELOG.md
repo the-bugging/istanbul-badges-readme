@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.8.2](https://github.com/olavoparno/istanbul-badges-readme/compare/v1.8.1...v1.8.2) (2022-06-14)
+
+
+### Bug Fixes
+
+* **arguments:** check only for args beggining with -- ([49cab51](https://github.com/olavoparno/istanbul-badges-readme/commit/49cab518ba403eecd22fa932d692176166629db6)), closes [#70](https://github.com/olavoparno/istanbul-badges-readme/issues/70)
+
 ### [1.8.1](https://github.com/olavoparno/istanbul-badges-readme/compare/v1.8.0...v1.8.1) (2021-12-07)
 
 
