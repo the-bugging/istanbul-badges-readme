@@ -3,11 +3,11 @@ import { getArgumentValue } from './arguments';
 import { readmePathConst, coveragePathConst, hashesConst, coverageUrlConst, badgeStyles } from './constants';
 import { getCoveragePath, getReadmePath, readFileAsync } from './helpers';
 import { logger } from './logger';
-import { TColors, THashes, TReport } from './types';
+import { Colors, Hashes, Report } from './types';
 
 const { logInfo } = logger();
 
-export const getReadmeHashes = (readmeFile: string): THashes[] => {
+export const getReadmeHashes = (readmeFile: string): Hashes[] => {
   logInfo('- Getting readme hashes...');
 
   const readmeHashes = hashesConst.coverage.map((hash) => {
@@ -20,10 +20,10 @@ export const getReadmeHashes = (readmeFile: string): THashes[] => {
 
   const filteredHashes = readmeHashes.filter(Boolean);
 
-  return filteredHashes as unknown as THashes[];
+  return filteredHashes as unknown as Hashes[];
 };
 
-export const getCoverageColor = (coverage: number): TColors => {
+export const getCoverageColor = (coverage: number): Colors => {
   if (coverage < 80) {
     return 'red';
   }
@@ -38,7 +38,7 @@ export const getCoverageBadge = (coverageFile: string, hashKey: string): string 
   logInfo(`- Getting coverage badge url for ${hashKey}...`);
 
   try {
-    const parsedCoverage: TReport = JSON.parse(coverageFile);
+    const parsedCoverage: Report = JSON.parse(coverageFile);
 
     if (!parsedCoverage.total || !parsedCoverage.total[hashKey]) {
       return false;
@@ -62,7 +62,7 @@ export const getCoverageBadge = (coverageFile: string, hashKey: string): string 
 
 export const getNewReadme =
   (readmeFile: string, coverageFile: string) =>
-  (readmeHashes: THashes[]): Promise<string> => {
+  (readmeHashes: Hashes[]): Promise<string> => {
     logInfo('- Getting new readme data...');
 
     let newReadmeFile = readmeFile;

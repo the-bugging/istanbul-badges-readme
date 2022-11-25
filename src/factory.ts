@@ -1,16 +1,7 @@
-type TBadgerFactory = {
-  checkConfig: () => Promise<void>;
-  editReadme: () => Promise<void>;
-  logger: () => {
-    logInfo: (message: string) => void;
-    logWarn: (message: string) => void;
-    logError: (message: string) => void;
-  };
-  getExitCodeOnError?: () => number | undefined;
-};
+import { BadgerFactory } from './types';
 
 export const badgerFactory =
-  ({ checkConfig, editReadme, logger, getExitCodeOnError }: TBadgerFactory) =>
+  ({ checkConfig, editReadme, logger, getExitCodeOnError }: BadgerFactory) =>
   (): Promise<void> => {
     const { logInfo, logError } = logger();
 
