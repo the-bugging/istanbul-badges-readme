@@ -2,12 +2,12 @@ import { BadgerFactory } from './types';
 
 export const badgerFactory =
   ({ checkConfig, editReadme, logger, getExitCodeOnError }: BadgerFactory) =>
-  (): Promise<void> => {
+  async (): Promise<void> => {
     const { logInfo, logError } = logger();
 
     logInfo('Istanbul Badges Readme process started');
 
-    return checkConfig()
+    await checkConfig()
       .then(() => editReadme())
       .catch((error) => {
         logError(`${error}`);
