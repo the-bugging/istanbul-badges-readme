@@ -1,5 +1,3 @@
-<img align="right" alt="traffic" src="https://pv-badge.herokuapp.com/total.svg?repo_id=olavoparno-istanbul-badges-readme"/>
-
 # Istanbul Badges Readme
 
 > Creates README badges from istanbul coverage report
@@ -253,6 +251,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center"><a href="https://github.com/myknbani"><img src="https://avatars.githubusercontent.com/u/5841268?v=4?s=70" width="70px;" alt="Richard Michael Coo"/><br /><sub><b>Richard Michael Coo</b></sub></a><br /><a href="https://github.com/olavoparno/istanbul-badges-readme/issues?q=author%3Amyknbani" title="Bug reports">🐛</a></td>
       <td align="center"><a href="https://www.linkedin.com/in/leticiavna/"><img src="https://avatars.githubusercontent.com/u/28829955?v=4?s=70" width="70px;" alt="Letícia Vidal"/><br /><sub><b>Letícia Vidal</b></sub></a><br /><a href="https://github.com/olavoparno/istanbul-badges-readme/issues?q=author%3Aleticiavna" title="Bug reports">🐛</a></td>
       <td align="center"><a href="https://canbax.github.io/"><img src="https://avatars.githubusercontent.com/u/8426741?v=4?s=70" width="70px;" alt="Yusuf"/><br /><sub><b>Yusuf</b></sub></a><br /><a href="https://github.com/olavoparno/istanbul-badges-readme/commits?author=canbax" title="Documentation">📖</a></td>
+      <td align="center"><a href="https://github.com/supunTE"><img src="https://avatars.githubusercontent.com/u/33794760?v=4?s=70" width="70px;" alt="supunTE"/><br /><sub><b>supunTE</b></sub></a><br /><a href="https://github.com/olavoparno/istanbul-badges-readme/issues/79" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
