@@ -173,8 +173,18 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "canbax",
+      "name": "Yusuf",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8426741?v=4",
+      "profile": "https://canbax.github.io/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
-  "skipCi": true
+  "skipCi": true,
+  "commitConvention": "angular"
 }
