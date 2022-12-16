@@ -16,7 +16,7 @@
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Simple Usage](#simple-usage)
-- [Advanced Usage](#advanced-usage)
+- [Advanced Usage](#advanced-usage-arguments)
 - [Usage as a part of your githooks](#usage-as-a-part-of-your-githooks)
 - [Usage as a part of your CI](#usage-as-a-part-of-your-ci)
 - [Custom badge Styles](#custom-badge-styles)
@@ -87,7 +87,9 @@
 
 ---
 
-## Advanced Usage
+## Advanced Usage Arguments
+
+#### Coverage Directory
 
 - Custom coverage directory? Use **--coverageDir** argument:
 
@@ -95,11 +97,15 @@
   npm run istanbul-badges-readme --coverageDir="./my-custom-coverage-directory"
 ```
 
+#### Readme Directory
+
 - Custom readme directory? Use **--readmeDir** argument:
 
 ```bash
   npm run istanbul-badges-readme --readmeDir="./my-custom-readme-directory"
 ```
+
+#### Silent
 
 - Want it without logging? Try silent mode with **--silent** argument:
 
@@ -107,11 +113,15 @@
   npm run istanbul-badges-readme --silent
 ```
 
+#### Functions and Branches Labels
+
 - You may also create custom labeling for the badges using the corresponding hash and _Label_ e.g. _branchesLabel_ **--branchesLabel='Branches are troublesome!'**:
 
 ```bash
   npm run istanbul-badges-readme --functionsLabel='Mis funciones!' --branchesLabel='Branches are troublesome!'
 ```
+
+#### Badge Style
 
 - You can also change the badge styling, according to _[shields.io's](https://shields.io/)_ own style reference. See more examples [here](#badge-styles).
 
@@ -119,11 +129,15 @@
   npm run istanbul-badges-readme --style="for-the-badges"
 ```
 
+#### Badge Logo
+
 - There is an option to use a _logo_ within the badge, as described on _[shields.io's](https://shields.io/)_ own documentation which uses all icons available at _[simple-icons](https://simpleicons.org/)_.
 
 ```bash
   npm run istanbul-badges-readme --logo="jest"
 ```
+
+#### Exit code
 
 - To exit with **1** code on validation errors (eg.: _README doesn't exist_, or _coverage directory doesn't exist_) or on editing errors (eg.: cannot write to README due to lack of permissions). The default exit code is **0**. Set a different one by using **--exitCode** argument.
 
@@ -161,9 +175,9 @@
 
 You may want to have peace of mind that contributors have run `istanbul-badges-readme` locally by performing a simple check in your CI.
 
-The `--ci` argument will throw an error if the badges generated do not match what is already in the `README.md`.
+The `--ci` argument will throw an error, code 0 by default unless [exitCode](#exit-code) is specified, thus not updating anything regarding coverage, if the badges generated do not match what is already in the `README.md`.
 
-You can add this to your **package.json** as follows:
+You can add this to your **package.json** as follows for exitCode 0:
 
 ```json
 "scripts": {
@@ -172,7 +186,14 @@ You can add this to your **package.json** as follows:
 }
 ```
 
-Where the script `make-badges:ci` will run your existing `make-badges` script by just adding `--ci` as an argument.
+Also if you wish a different exitCode:
+
+```json
+"scripts": {
+  "make-badges": "istanbul-badges-readme",
+  "make-badges:ci": "npm run make-badges -- --ci --exitCode=1",
+}
+```
 
 This is a useful addition/alternative to the githooks approach for some use cases such as larger codebases, slow computers etc, where it isn't always feasible to run all the tests and produce coverage on each commit.
 
