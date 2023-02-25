@@ -41,7 +41,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/olavoparno/istanbul-badges-readme.git"
+    "url": "git://github.com/the-bugging/istanbul-badges-readme.git"
   },
   "jest": {
     "coverageReporters": [

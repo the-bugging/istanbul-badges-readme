@@ -12,7 +12,7 @@ export const badgerFactory =
       .catch((error) => {
         logError(`${error}`);
         logError('Please refer to the documentation');
-        logError('https://github.com/olavoparno/istanbul-badges-readme/blob/master/README.md');
+        logError('https://github.com/the-bugging/istanbul-badges-readme/blob/master/README.md');
 
         process.exitCode = getExitCodeOnError?.() ?? 0;
       })

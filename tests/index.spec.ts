@@ -49,7 +49,7 @@ describe('Tests istanbul badges readme', () => {
     expect(consoleErrorFn).toHaveBeenNthCalledWith(2, 'Please refer to the documentation');
     expect(consoleErrorFn).toHaveBeenNthCalledWith(
       3,
-      'https://github.com/olavoparno/istanbul-badges-readme/blob/master/README.md',
+      'https://github.com/the-bugging/istanbul-badges-readme/blob/master/README.md',
     );
   });
 
@@ -89,7 +89,7 @@ describe('Tests istanbul badges readme', () => {
         expect(consoleErrorFn).toHaveBeenNthCalledWith(2, 'Please refer to the documentation');
         expect(consoleErrorFn).toHaveBeenNthCalledWith(
           3,
-          'https://github.com/olavoparno/istanbul-badges-readme/blob/master/README.md',
+          'https://github.com/the-bugging/istanbul-badges-readme/blob/master/README.md',
         );
         expect(processExitSpy).toHaveBeenCalledWith(getExitCodeOnError());
       })
