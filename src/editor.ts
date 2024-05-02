@@ -1,7 +1,7 @@
 import fs from 'fs';
 import { getArgumentValue } from './arguments';
 import { readmePathConst, coveragePathConst, hashesConst, coverageUrlConst, badgeStyles } from './constants';
-import { getCoveragePath, getReadmePath, readFileAsync } from './helpers';
+import { getCoveragePath, getReadmePath, readFileAsync, parseColorConfig } from './helpers';
 import { logger } from './logger';
 import { Colors, Hashes, Report } from './types';
 
@@ -23,16 +23,39 @@ export const getReadmeHashes = (readmeFile: string): Hashes[] => {
   return filteredHashes as unknown as Hashes[];
 };
 
-export const getCoverageColor = (coverage: number): Colors => {
-  if (coverage < 80) {
+
+
+/**
+ * Determines the color representation of code coverage based on coverage percentage.
+ * Optionally uses a provided string to configure custom color thresholds.
+ *
+ * @param {number} coverage - The code coverage percentage to evaluate.
+ * @param {string | false} colorConfigString - A string to configure custom color thresholds, or false to use defaults.
+ * @returns {Colors} - The color associated with the given code coverage percentage, based on either default or custom thresholds.
+ */
+export const getCoverageColor = (coverage: number, colorConfigString?: string | false): Colors => {
+  const defaultThresholds = {
+    red: 80,
+    yellow: 90,
+  };
+
+  let colorThresholds = defaultThresholds;
+
+  if (colorConfigString) {
+    colorThresholds = parseColorConfig(colorConfigString);
+  }
+
+  // Adjusting to use dynamic color thresholds from colorConfigString if provided
+  if (coverage < colorThresholds.red) {
     return 'red';
   }
-  if (coverage < 90) {
+  if (coverage < colorThresholds.yellow) {
     return 'yellow';
   }
 
   return 'brightgreen';
 };
+
 
 export const getCoverageBadge = (coverageFile: string, hashKey: string): string | boolean => {
   logInfo(`- Getting coverage badge url for ${hashKey}...`);
@@ -45,7 +68,8 @@ export const getCoverageBadge = (coverageFile: string, hashKey: string): string 
     }
 
     const coverage: number = parsedCoverage.total[hashKey].pct;
-    const color = getCoverageColor(coverage);
+    const customColors = getArgumentValue('colors');
+    const color = getCoverageColor(coverage, customColors);
     const customLabel = getArgumentValue(`${hashKey}Label`);
     const customBadgeStyle = getArgumentValue('style');
     const customBadgeLogo = getArgumentValue('logo');

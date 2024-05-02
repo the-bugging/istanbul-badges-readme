@@ -135,6 +135,9 @@
   npm run istanbul-badges-readme --logo="jest"
 ```
 
+#### Configure Badge Color
+
+
 #### Exit code
 
 - To exit with **1** code on validation errors (eg.: _README doesn't exist_, or _coverage directory doesn't exist_) or on editing errors (eg.: cannot write to README due to lack of permissions). The default exit code is **0**. Set a different one by using **--exitCode** argument.

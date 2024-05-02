@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import { getReadmeHashes, getCoverageColor, getCoverageBadge, getNewReadme, writeNewReadme } from '../src/editor';
+import { getReadmeHashes, getCoverageBadge, getCoverageColor, getNewReadme, writeNewReadme } from '../src/editor';
+import { parseColorConfig } from '../src/helpers';
 
 describe('Tests editor', () => {
   afterEach(() => {
@@ -14,20 +15,49 @@ describe('Tests editor', () => {
     expect(readmeHashes.length).toEqual(0);
   });
 
-  it('should getCoverageColor from both red, yellow and green', () => {
-    const colorsMap: Record<any, string> = {
-      90: 'brightgreen',
-      80: 'yellow',
-      default: 'red',
-    };
+  describe('parseColorConfig', () => {
+    it('correctly parses a valid color configuration string', () => {
+      const inputString = 'red:70,yellow:85';
+      const expectedResult = { red: 70, yellow: 85 };
+      expect(parseColorConfig(inputString)).toEqual(expectedResult);
+    });
 
-    const checkColor = (threshold: number) =>
-      expect(getCoverageColor(threshold)).toEqual(colorsMap[threshold] ? colorsMap[threshold] : colorsMap.default);
+    it('ignores invalid color names', () => {
+      const inputString = 'red:70,yellow:85,blue:95';
+      const expectedResult = { red: 70, yellow: 85 };
+      expect(parseColorConfig(inputString)).toEqual(expectedResult);
+    });
 
-    checkColor(90);
-    checkColor(80);
-    checkColor(79);
-    checkColor(10);
+    it('returns default colors for an empty string', () => {
+      const inputString = '';
+      const expectedResult = { red: 80, yellow: 90 };
+      expect(parseColorConfig(inputString)).toEqual(expectedResult);
+    });
+  });
+
+  describe('getCoverageColor', () => {
+    test.each`
+      coverage | expectedColor
+      ${75}    | ${'red'}
+      ${85}    | ${'yellow'}
+      ${95}    | ${'brightgreen'}
+    `(
+      'returns $expectedColor for a coverage of $coverage using default thresholds',
+      ({ coverage, expectedColor }) => {
+        expect(getCoverageColor(coverage)).toBe(expectedColor);
+      }
+    );
+
+    test('uses custom thresholds if provided', () => {
+      const customConfig = 'red:70,yellow:85';
+      expect(getCoverageColor(65, customConfig)).toBe('red');
+      expect(getCoverageColor(75, customConfig)).toBe('yellow');
+      expect(getCoverageColor(90, customConfig)).toBe('brightgreen');
+    });
+
+    test('returns brightgreen for coverage above 100', () => {
+      expect(getCoverageColor(105)).toBe('brightgreen');
+    });
   });
 
   it('should getCoverageBadge from coverageFile', () => {
