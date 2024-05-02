@@ -136,7 +136,7 @@
 ```
 
 #### Configure Badge Color
-- You can configure the color threshold of the badges by passing the `--colors` parameter. If you want red badges for a code coverage below 50% and yellow badges for a coverage below 60%, you'd do this:
+- You can configure the color threshold of the badges by passing the `--colors` argument. If you want red badges for a code coverage below 50% and yellow badges for a coverage below 60%, you'd do this:
 ```bash
   npm run istanbul-badges-readme --colors=red:50,yellow:60
 ```
