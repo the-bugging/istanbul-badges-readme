@@ -27,3 +27,7 @@ export const badgeStyles: Record<string, BadgeStyles> = {
   plastic: 'plastic',
   default: 'flat',
 };
+export const defaultColorThresholds = {
+  red: 80,
+  yellow: 90,
+};

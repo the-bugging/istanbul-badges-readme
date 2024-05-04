@@ -1,5 +1,9 @@
 import fs from 'fs';
+import { logger } from './logger';
 import { getArgumentValue } from './arguments';
+import { defaultColorThresholds } from './constants';
+
+const { logWarn } = logger();
 
 export const getCoveragePath = (path: string): string => {
   let coveragePath: string = path;
@@ -55,26 +59,35 @@ export const getExitCodeOnError = (): number | undefined => {
  * The input string should be formatted as "color:value", with multiple color-value pairs separated by commas.
  * This function specifically expects "red", "yellow", and "brightgreen" as the only valid colors in the string.
  *
- * @param {string} colorsString - The string representation of colors and their values to parse.
+ * @param optional {string | false} colorConfigString - The string representation of colors and their values to parse.
  * @returns {{ red: number; yellow: number; brightgreen: number }} An object with keys "red", "yellow", and "brightgreen",
  *          each mapped to their numeric value as specified in the input string.
+ * @example parseColorConfig('red:70,yellow:85,brightgreen:95') => { red: 70, yellow: 85, brightgreen: 95 }
  */
-export const parseColorConfig = (colorsString: string): {
+export const parseColorConfig = (
+  colorConfigString?: string | false,
+): {
   red: number;
   yellow: number;
 } => {
-  if (!colorsString) {
-    return { red: 80, yellow: 90 };
+  if (!colorConfigString) {
+    return defaultColorThresholds;
   }
 
-  return colorsString.split(',').reduce((acc, colorPair) => {
+  // checks if colorConfigString is in the correct format color:numberThreshold separated by commas
+  if (!/^((red|yellow):[0-9]+,?)+$/.test(colorConfigString)) {
+    logWarn(
+      `Invalid color configuration string provided: "${colorConfigString}". Using default color thresholds instead.`,
+    );
+
+    return defaultColorThresholds;
+  }
+
+  return colorConfigString.split(',').reduce((acc, colorPair) => {
     const [color, value] = colorPair.split(':');
     if (color === 'red' || color === 'yellow') {
       acc[color] = parseInt(value, 10);
     }
     return acc;
-  }, {} as { red: number; yellow: number; });
+  }, {} as { red: number; yellow: number });
 };
-
-
-

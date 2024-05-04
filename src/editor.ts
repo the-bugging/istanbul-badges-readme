@@ -7,6 +7,11 @@ import { Colors, Hashes, Report } from './types';
 
 const { logInfo } = logger();
 
+/**
+ * Gets the hashes from the readme file.
+ * @param {string} readmeFile - The readme file to search for hashes.
+ * @returns {Hashes[]} - An array of hashes found in the readme file.
+ */
 export const getReadmeHashes = (readmeFile: string): Hashes[] => {
   logInfo('- Getting readme hashes...');
 
@@ -23,39 +28,27 @@ export const getReadmeHashes = (readmeFile: string): Hashes[] => {
   return filteredHashes as unknown as Hashes[];
 };
 
-
-
 /**
  * Determines the color representation of code coverage based on coverage percentage.
  * Optionally uses a provided string to configure custom color thresholds.
- *
  * @param {number} coverage - The code coverage percentage to evaluate.
  * @param {string | false} colorConfigString - A string to configure custom color thresholds, or false to use defaults.
  * @returns {Colors} - The color associated with the given code coverage percentage, based on either default or custom thresholds.
  */
 export const getCoverageColor = (coverage: number, colorConfigString?: string | false): Colors => {
-  const defaultThresholds = {
-    red: 80,
-    yellow: 90,
-  };
-
-  let colorThresholds = defaultThresholds;
-
-  if (colorConfigString) {
-    colorThresholds = parseColorConfig(colorConfigString);
-  }
+  const colorThresholds = parseColorConfig(colorConfigString);
 
   // Adjusting to use dynamic color thresholds from colorConfigString if provided
   if (coverage < colorThresholds.red) {
     return 'red';
   }
+
   if (coverage < colorThresholds.yellow) {
     return 'yellow';
   }
 
   return 'brightgreen';
 };
-
 
 export const getCoverageBadge = (coverageFile: string, hashKey: string): string | boolean => {
   logInfo(`- Getting coverage badge url for ${hashKey}...`);

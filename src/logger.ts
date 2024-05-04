@@ -8,7 +8,12 @@ export const logger = (): {
   const customLog =
     (level: (message?: unknown, ...optionalParams: unknown[]) => void, isSupressable: boolean) => (message: string) => {
       const isSupressed = isSupressable && getArgumentValue('silent');
-      return !isSupressed && level(message);
+
+      if (isSupressed) {
+        return null;
+      }
+
+      return level(message);
     };
 
   return {

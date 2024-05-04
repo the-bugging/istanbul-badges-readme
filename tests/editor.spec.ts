@@ -2,11 +2,13 @@ import fs from 'fs';
 import path from 'path';
 import { getReadmeHashes, getCoverageBadge, getCoverageColor, getNewReadme, writeNewReadme } from '../src/editor';
 import { parseColorConfig } from '../src/helpers';
+import { defaultColorThresholds } from '../src/constants';
 
 describe('Tests editor', () => {
   afterEach(() => {
     process.argv.pop();
   });
+
   it('should getReadmeHashes from invalid readme', () => {
     const fakeReadmeFile = path.join(__dirname, '../tests/mocks/fakeReadmeFile.md');
 
@@ -16,6 +18,15 @@ describe('Tests editor', () => {
   });
 
   describe('parseColorConfig', () => {
+    it('returns defaultColorThresholds with an invalid color configuration string and warns', () => {
+      const inputString = 'red 70,yellow 85';
+      const expectedResult = defaultColorThresholds;
+
+      const results = parseColorConfig(inputString);
+
+      expect(results).toEqual(expectedResult);
+    });
+
     it('correctly parses a valid color configuration string', () => {
       const inputString = 'red:70,yellow:85';
       const expectedResult = { red: 70, yellow: 85 };
@@ -24,7 +35,7 @@ describe('Tests editor', () => {
 
     it('ignores invalid color names', () => {
       const inputString = 'red:70,yellow:85,blue:95';
-      const expectedResult = { red: 70, yellow: 85 };
+      const expectedResult = defaultColorThresholds;
       expect(parseColorConfig(inputString)).toEqual(expectedResult);
     });
 
@@ -41,12 +52,9 @@ describe('Tests editor', () => {
       ${75}    | ${'red'}
       ${85}    | ${'yellow'}
       ${95}    | ${'brightgreen'}
-    `(
-      'returns $expectedColor for a coverage of $coverage using default thresholds',
-      ({ coverage, expectedColor }) => {
-        expect(getCoverageColor(coverage)).toBe(expectedColor);
-      }
-    );
+    `('returns $expectedColor for a coverage of $coverage using default thresholds', ({ coverage, expectedColor }) => {
+      expect(getCoverageColor(coverage)).toBe(expectedColor);
+    });
 
     test('uses custom thresholds if provided', () => {
       const customConfig = 'red:70,yellow:85';
