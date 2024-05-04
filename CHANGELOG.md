@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.9.0](https://github.com/the-bugging/istanbul-badges-readme/compare/v1.8.5...v1.9.0) (2024-05-04)
+
+
+### Features
+
+* color config ([b1da2a6](https://github.com/the-bugging/istanbul-badges-readme/commit/b1da2a6b371d90c480d60e861d5853d98019f815))
+
+
+### Bug Fixes
+
+* typo ([4174c43](https://github.com/the-bugging/istanbul-badges-readme/commit/4174c4334457536952a6a9688a9d5a7fa5c3f2b8))
+
 ### [1.8.5](https://github.com/the-bugging/istanbul-badges-readme/compare/v1.8.4...v1.8.5) (2023-02-25)
 
 ### [1.8.4](https://github.com/the-bugging/istanbul-badges-readme/compare/v1.8.3...v1.8.4) (2022-11-26)
