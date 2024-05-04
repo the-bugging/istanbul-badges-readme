@@ -1,6 +1,6 @@
 {
   "projectName": "istanbul-badges-readme",
-  "projectOwner": "olavoparno",
+  "projectOwner": "the-bugging",
   "repoType": "github",
   "repoHost": "https://github.com",
   "files": [
@@ -191,9 +191,20 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "Ic3m4n34",
+      "name": "Nico Meyer",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11556486?v=4",
+      "profile": "https://nico-meyer.com",
+      "contributions": [
+        "code",
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7,
   "skipCi": true,
-  "commitConvention": "angular"
+  "commitConvention": "angular",
+  "commitType": "docs"
 }
