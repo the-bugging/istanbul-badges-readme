@@ -135,6 +135,13 @@
   npm run istanbul-badges-readme --logo="jest"
 ```
 
+#### Configure Badge Color
+- You can configure the color threshold of the badges by passing the `--colors` argument. If you want red badges for a code coverage below 50% and yellow badges for a coverage below 60%, you'd do this:
+```bash
+  npm run istanbul-badges-readme --colors=red:50,yellow:60
+```
+
+
 #### Exit code
 
 - To exit with **1** code on validation errors (eg.: _README doesn't exist_, or _coverage directory doesn't exist_) or on editing errors (eg.: cannot write to README due to lack of permissions). The default exit code is **0**. Set a different one by using **--exitCode** argument.

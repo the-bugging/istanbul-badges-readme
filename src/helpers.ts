@@ -49,3 +49,32 @@ export const getExitCodeOnError = (): number | undefined => {
 
   return argExitCode && !isNaN(argExitCode) ? argExitCode : undefined;
 };
+
+/**
+ * Parses a string representing colors and their corresponding numeric values into an object.
+ * The input string should be formatted as "color:value", with multiple color-value pairs separated by commas.
+ * This function specifically expects "red", "yellow", and "brightgreen" as the only valid colors in the string.
+ *
+ * @param {string} colorsString - The string representation of colors and their values to parse.
+ * @returns {{ red: number; yellow: number; brightgreen: number }} An object with keys "red", "yellow", and "brightgreen",
+ *          each mapped to their numeric value as specified in the input string.
+ */
+export const parseColorConfig = (colorsString: string): {
+  red: number;
+  yellow: number;
+} => {
+  if (!colorsString) {
+    return { red: 80, yellow: 90 };
+  }
+
+  return colorsString.split(',').reduce((acc, colorPair) => {
+    const [color, value] = colorPair.split(':');
+    if (color === 'red' || color === 'yellow') {
+      acc[color] = parseInt(value, 10);
+    }
+    return acc;
+  }, {} as { red: number; yellow: number; });
+};
+
+
+
